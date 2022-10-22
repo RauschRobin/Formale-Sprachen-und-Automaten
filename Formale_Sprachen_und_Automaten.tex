@@ -66,7 +66,40 @@ Beispiel: Sei $L_1 = \{ ab, ba\}$, dann $L^* = \{\epsilon, ab, ba, abab, abba, b
 
 \section{Reguläre Sprachen und endliche Ausdrücke}
 \subsection{Reguläre Ausdrücke}
-Reguläre Ausdrücke sind 
+Ein regulärer Ausdruck über $\varSigma$ beschreibt eine formale Sprache.\newline
+Die Menge aller regulären Ausdrücke über $\varSigma$ ist eine formale Sprache.\newline\newline
+Beispiel: Sprache aller Wörter über $\varSigma_{abc}$, die nur aus genau zwei Symbolen bestehen:\newline
+Ausdruck: $r_1 = (a + b + c)(a + b + c)$\newline
+Sprache: $\mathcal{L}(r_1) = \{ w \in \varSigma_{abc}^*$ | $|w| = 2\}$\newpage
+Operatoren:
+\begin{center}
+	\begin{figure}[!h]
+		\includegraphics[width=\textwidth]{Bilder/RegulaereAusdruecke_Operatoren.PNG}
+	\end{figure}
+\end{center}
+Nicht alle Operatoren sind für alle Typen zulässig:
+\begin{center}
+	\begin{figure}[!h]
+		\includegraphics[width=\textwidth]{Bilder/Zulaessige_Operatoren.PNG}
+	\end{figure}
+\end{center}
+
+\subsection{Endliche Automaten}
+Endliche Automaten sind eine andere Darstellung einer regulären Sprache. Endliche Ausdrücke lassen sich in Reguläre Ausdrücke umformen. Genauso auch anders herum.\newline
+Endliche Automaten lassen sich sowohl deterministisch als auch nicht-deterministisch darstellen.
+
+\subsubsection{Deterministische endliche Automaten(DEA)}
+
+
+\subsubsection{Nicht-deterministische endliche Automaten(NEA)}
+
+\subsubsection{Endliche Automaten und reguläre Ausdrücke}
+
+\subsubsection{Minimierung}
+
+\subsection{Nicht-reguläre Sprachen und das Pumping-Lemma}
+
+\subsection{Eigenschaften regulärer Sprachen}
 
 \section{Chomsky Grammatiken und kontextfreie Sprachen}
 
