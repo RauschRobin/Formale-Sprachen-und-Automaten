@@ -29,17 +29,19 @@
 	\fancyhead[L]{\includegraphics[scale=0.05]{Bilder/dhbw.png}} 
 	\fancyhead[C]{\slshape Formale Sprachen und Automaten} 
 	\fancyhead[R]{\slshape LaTeX Version}
-
+	\fancyfoot[C]{\thepage}
 \usepackage{helvet}
 \renewcommand{\familydefault}{\sfdefault}
 
-\author{\slshape Robin Rausch}
 \title{Formale Sprachen und Automaten}
+\author{\slshape Robin Rausch}
 \date{\slshape \today}
 \begin{document}
+\pagenumbering{Roman}
 \maketitle
 \tableofcontents
 \newpage
+\pagenumbering{arabic}
 \section{Grundlagen}
 \subsection{Alphabet}
 Ein Alphabet $\varSigma$ ist eine nicht-leere Menge von Symbolen(Zeichen, Buchstaben).
@@ -71,7 +73,7 @@ Die Menge aller regulären Ausdrücke über $\varSigma$ ist eine formale Sprache
 Beispiel: Sprache aller Wörter über $\varSigma_{abc}$, die nur aus genau zwei Symbolen bestehen:\newline
 Ausdruck: $r_1 = (a + b + c)(a + b + c)$\newline
 Sprache: $\mathcal{L}(r_1) = \{ w \in \varSigma_{abc}^*$ | $|w| = 2\}$\newpage
-Operatoren:
+\noindent Operatoren:
 \begin{center}
 	\begin{figure}[!h]
 		\includegraphics[width=\textwidth]{Bilder/RegulaereAusdruecke_Operatoren.PNG}
@@ -89,7 +91,21 @@ Endliche Automaten sind eine andere Darstellung einer regulären Sprache. Endlic
 Endliche Automaten lassen sich sowohl deterministisch als auch nicht-deterministisch darstellen.
 
 \subsubsection{Deterministische endliche Automaten(DEA)}
-
+Ein DEA hat endlich viele Zustände. Jeder mögliche Übergang muss hierbei behandelt werden können. D.h. für das Alphabet $\varSigma_{ab}$ muss von jedem Zustand sowohl ein $a$, als auch ein $b$ Übergang gegeben sein. Der Automat beginnt im Startzustand und muss im Endzustand enden. Wenn der Automat sich in einem Nicht-Endzustand befindet, befindet sich das Wort nicht in der Sprache, welche vom Automaten abgebildet wird.\newpage
+\noindent Der DEA lässt sich durch folgendes 5-Tupel darstellen:\newline
+$\mathcal{A} = (Q, \varSigma, \delta, q_0, F)$ mit den Komponenten:\newline
+$Q$ ist eine endliche Menge von Zuständen\newline
+$\varSigma$ ist ein endliches Alphabet\newline
+$\delta: Q \times \varSigma \rightarrow Q$ ist die Übergangsfunktion\newline
+$q_0 \in Q$ ist der Startzustand\newline
+$F \subseteq Q$ ist die Menge der Endzustände\newline
+\newline
+Beispiel:\newline
+\begin{center}
+	\begin{figure}[!h]
+		\includegraphics[width=\textwidth]{Bilder/DEA_Beispiel.PNG}
+	\end{figure}
+\end{center}
 
 \subsubsection{Nicht-deterministische endliche Automaten(NEA)}
 
