@@ -91,7 +91,7 @@ Endliche Automaten sind eine andere Darstellung einer regulären Sprache. Endlic
 Endliche Automaten lassen sich sowohl deterministisch als auch nicht-deterministisch darstellen.
 
 \subsubsection{Deterministische endliche Automaten(DEA)}
-Ein DEA hat endlich viele Zustände. Jeder mögliche Übergang muss hierbei behandelt werden können. D.h. für das Alphabet $\varSigma_{ab}$ muss von jedem Zustand sowohl ein $a$, als auch ein $b$ Übergang gegeben sein. Der Automat beginnt im Startzustand und muss im Endzustand enden. Wenn der Automat sich in einem Nicht-Endzustand befindet, befindet sich das Wort nicht in der Sprache, welche vom Automaten abgebildet wird.\newpage
+Ein DEA hat endlich viele Zustände. Jeder mögliche Übergang muss hierbei behandelt werden können. D.h. für das Alphabet $\varSigma_{ab}$ muss von jedem Zustand sowohl ein $a$, als auch ein $b$ Übergang gegeben sein. Der Automat beginnt im Startzustand und muss im Endzustand enden. Wenn der Automat sich in einem Nicht-Endzustand befindet, befindet sich das Wort nicht in der Sprache, welche vom Automaten abgebildet wird.\newline
 \noindent Der DEA lässt sich durch folgendes 5-Tupel darstellen:\newline
 $\mathcal{A} = (Q, \varSigma, \delta, q_0, F)$ mit den Komponenten:\newline
 $Q$ ist eine endliche Menge von Zuständen\newline
@@ -108,8 +108,24 @@ Beispiel:\newline
 \end{center}
 
 \subsubsection{Nicht-deterministische endliche Automaten(NEA)}
+Ein NEA hat endlich viele Zustände. Nicht jeder mögliche Übergang muss hierbei behandelt werden. D.h. für das Alphabet $\varSigma_{ab}$ reicht es, nur den $a$-Übergang, bzw. nur den $b$-Übergang zu besitzen. Der Automat beginnt im Startzustand und muss im Endzustand enden. Wenn der Automat sich in einem Nicht-Endzustand befindet, befindet sich das Wort nicht in der Sprache, welche vom Automaten abgebildet wird. Zudem gibt es $\epsilon$-Übergänge, diese können jederzeit verwendet werden ohne ein Eingabesymbol.\newline
+\noindent Der NEA lässt sich durch folgendes 5-Tupel darstellen:\newline
+$\mathcal{A} = (Q, \varSigma, \Delta , q_0, F)$ mit den Komponenten:\newline
+$Q$ ist eine endliche Menge von Zuständen\newline
+$\varSigma$ ist ein endliches Alphabet\newline
+$\Delta$ ist eine Relation über $Q \times (\varSigma \cup \{\epsilon\}) \times Q$\newline
+$q_0 \in Q$ ist der Startzustand\newline
+$F \subseteq Q$ ist die Menge der Endzustände\newline
+\newline
+Beispiel:\newline
+\begin{center}
+	\begin{figure}[!h]
+		\includegraphics[width=\textwidth]{Bilder/NEA_Beispiel.png}
+	\end{figure}
+\end{center}
 
 \subsubsection{Endliche Automaten und reguläre Ausdrücke}
+TOP TEXT TOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXT.
 
 \subsubsection{Minimierung}
 
