@@ -88,10 +88,12 @@ Nicht alle Operatoren sind für alle Typen zulässig:
 
 \subsection{Endliche Automaten}
 Endliche Automaten sind eine andere Darstellung einer regulären Sprache. Endliche Ausdrücke lassen sich in Reguläre Ausdrücke umformen. Genauso auch anders herum.\newline
+Endliche Automaten erkennen regulären Sprachen. Endliche Ausdrücke lassen sich in Reguläre Ausdrücke umformen. Genauso auch anders herum.\newline
 Endliche Automaten lassen sich sowohl deterministisch als auch nicht-deterministisch darstellen.
 
 \subsubsection{Deterministische endliche Automaten(DEA)}
 Ein DEA hat endlich viele Zustände. Jeder mögliche Übergang muss hierbei behandelt werden können. D.h. für das Alphabet $\varSigma_{ab}$ muss von jedem Zustand sowohl ein $a$, als auch ein $b$ Übergang gegeben sein. Der Automat beginnt im Startzustand und muss im Endzustand enden. Wenn der Automat sich in einem Nicht-Endzustand befindet, befindet sich das Wort nicht in der Sprache, welche vom Automaten abgebildet wird.\newline
+Ein DEA hat endlich viele Zustände. Jeder mögliche Übergang muss hierbei behandelt werden können. D.h. für das Alphabet $\varSigma_{ab}$ muss von jedem Zustand sowohl ein $a$, als auch ein $b$ Übergang gegeben sein. Er terminiert wenn das Wort zu ende und Endzustand erreicht ist.
 \noindent Der DEA lässt sich durch folgendes 5-Tupel darstellen:\newline
 $\mathcal{A} = (Q, \varSigma, \delta, q_0, F)$ mit den Komponenten:\newline
 $Q$ ist eine endliche Menge von Zuständen\newline
