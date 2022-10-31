@@ -34,7 +34,7 @@
 \renewcommand{\familydefault}{\sfdefault}
 
 \title{Formale Sprachen und Automaten}
-\author{\slshape Robin Rausch}
+\author{\slshape Robin Rausch, Florian Maslowski}
 \date{\slshape \today}
 \begin{document}
 \pagenumbering{Roman}
@@ -136,8 +136,33 @@ TOP TEXT TOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEX
 \subsection{Eigenschaften regulärer Sprachen}
 
 \section{Chomsky Grammatiken und kontextfreie Sprachen}
+	Gramatiken erzeugen formale Sprachen dar.\\
+	G=($N, \sum , P, S$) mit:\\
+	\begin{description}
+		\item[N] Nichtterminalsymbole. Diese können für Regeln verwendet werden, aber dürfen nicht selbst im abgeleiteten Wort stehen.
+		\item[P] Ableitungsregeln. Bsp.: P=$\{ S \rightarrow Aa | \epsilon , A \rightarrow a \} $ 
+		\item[S] Startsymbol (ist nichtterminel)
+	\end{description}
+
+	\subsection{Typ0 unbeschränkt}
+    \subsection{Typ1 Monoton}
+      $\alpha \rightarrow \beta$ mit $| \alpha | \leq  | \beta |$ und Ausnahme $S \rightarrow \epsilon$, wenn S auf keiner rechten Seite ist.
+    \subsection{Typ2 Kontextfreie}
+      A $\rightarrow \beta$ mit A $\in$ N und $\beta \in V$*
+    \subsection{Typ3 rechtsregulär/-linear}
+      A $\rightarrow$ cB mit A $\in$ N; B $\in$ N $\cup$ $\{ \epsilon \}$; c $\in \sum \cup \{ \epsilon \}$
+    \subsection{Chomskynormalform CNF}
+      Ohne $\epsilon$ und unnötige Regeln und Terminalsymbole.\\
 
 \section{Turing Maschine}
+	Automaten mit endlosem Einleseband.\\
+	Terminiert wenn Endzustand erreicht und Einleseband nicht verschiebbar ist.\\
+	M=(Q, $\sum, \Gamma , \Delta , q_0$, F) mit:\\
+	\begin{description}
+		\item[$\Gamma$] Vereinigung aus mindestens Blank-Symbol und Terminalsymbole: $\Gamma \supseteq \sum \cup \{ \square \} $
+		\item[$\Delta$] Übergangsrelationen Syntax: IST-Zustand IST-Inhalt Neuer-Inhalt Verschiebung Neuer-Zustand Bsp.: $0 \left( \begin{array}{c} a \\ \square \end{array}\right) \left( \begin{array}{c} a \\ a \end{array}\right) \begin{array}{c} r \\ l \end{array} 1$
+		\item[F] Endzustände
+	\end{description}
 
 \section{Entscheidbarkeit}
 
