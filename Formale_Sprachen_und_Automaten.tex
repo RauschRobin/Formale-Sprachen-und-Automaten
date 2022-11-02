@@ -54,7 +54,7 @@ Ebenso kann man die Anzahl bestimmter Symbole in einem Wort bestimmen: $|w|_b = 
 Ein einzelnes Zeichen kann durch eckige Klammern angegeben werden: $w[2] = b$\newline
 Wörter können bliebig konkateniert werden(hintereinanderschreiben ohne abstand): $w_1w_2 = abbabaab$ mit $w_1 = abba$ und $w_2 = baab$.\newline
 Wörter dürfen auch potenziert werden: $w^3 = abaabababaabababaabab = www$\newline
-Das leere Wort lautet $\epsilon$.
+Das leere Wort lautet $\varepsilon$.
 
 \subsection{Formale Sprachen}
 Eine formale Sprache $L$ über einem Alphabet $\varSigma$ ist eine Menge von Wörtern aus $\varSigma^*: L \subseteq \varSigma^*$. Eine Sprache kann sowohl endlich als auch unendlich sein.\newline
@@ -64,7 +64,7 @@ Sprachen können ebenfalls potenziert werden: $L^2 = \{ab, ba\} \cdot \{ab, ba\}
 
 \subsection{Kleene Stern}
 Für ein Alphabet $\varSigma$ und eine formale Sprache $L \subseteq \varSigma^*$ ist der Operator Kleene Stern wie folgt definiert: $L^* = \underset{n \in \mathbb{N}}{\bigcup} L^n$.\newline \newline
-Beispiel: Sei $L_1 = \{ ab, ba\}$, dann $L^* = \{\epsilon, ab, ba, abab, abba, baab, baba, ababab, ...\}$.
+Beispiel: Sei $L_1 = \{ ab, ba\}$, dann $L^* = \{\varepsilon, ab, ba, abab, abba, baab, baba, ababab, ...\}$.
 
 \section{Reguläre Sprachen und endliche Ausdrücke}
 \subsection{Reguläre Ausdrücke}
@@ -110,12 +110,12 @@ Beispiel:\newline
 \end{center}
 
 \subsubsection{Nicht-deterministische endliche Automaten(NEA)}
-Ein NEA hat endlich viele Zustände. Nicht jeder mögliche Übergang muss hierbei behandelt werden. D.h. für das Alphabet $\varSigma_{ab}$ reicht es, nur den $a$-Übergang, bzw. nur den $b$-Übergang zu besitzen. Der Automat beginnt im Startzustand und muss im Endzustand enden. Wenn der Automat sich in einem Nicht-Endzustand befindet, befindet sich das Wort nicht in der Sprache, welche vom Automaten abgebildet wird. Zudem gibt es $\epsilon$-Übergänge, diese können jederzeit verwendet werden ohne ein Eingabesymbol.\newline
+Ein NEA hat endlich viele Zustände. Nicht jeder mögliche Übergang muss hierbei behandelt werden. D.h. für das Alphabet $\varSigma_{ab}$ reicht es, nur den $a$-Übergang, bzw. nur den $b$-Übergang zu besitzen. Der Automat beginnt im Startzustand und muss im Endzustand enden. Wenn der Automat sich in einem Nicht-Endzustand befindet, befindet sich das Wort nicht in der Sprache, welche vom Automaten abgebildet wird. Zudem gibt es $\varepsilon$-Übergänge, diese können jederzeit verwendet werden ohne ein Eingabesymbol.\newline
 \noindent Der NEA lässt sich durch folgendes 5-Tupel darstellen:\newline
 $\mathcal{A} = (Q, \varSigma, \Delta , q_0, F)$ mit den Komponenten:\newline
 $Q$ ist eine endliche Menge von Zuständen\newline
 $\varSigma$ ist ein endliches Alphabet\newline
-$\Delta$ ist eine Relation über $Q \times (\varSigma \cup \{\epsilon\}) \times Q$\newline
+$\Delta$ ist eine Relation über $Q \times (\varSigma \cup \{\varepsilon\}) \times Q$\newline
 $q_0 \in Q$ ist der Startzustand\newline
 $F \subseteq Q$ ist die Menge der Endzustände\newline
 \newline
@@ -127,7 +127,39 @@ Beispiel:\newline
 \end{center}
 
 \subsubsection{Endliche Automaten und reguläre Ausdrücke}
-TOP TEXT TOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXT.
+Man kann NEA und RA zusammenführen zu einem Automaten:\newline
+\begin{center}
+	\begin{figure}[!h]
+		\includegraphics[width=\textwidth]{Bilder/Konkatenation.png}
+	\end{figure}
+\end{center}
+\begin{minipage}[c]{0.49\textwidth}
+	\includegraphics[width=\textwidth]{Bilder/Vereinigung.png}
+\end{minipage}
+\begin{minipage}[c]{0.49\textwidth}
+	\includegraphics[width=\textwidth]{Bilder/KleeneStern.png}
+\end{minipage}
+
+\subsubsection{Transformation DEA zu RA}
+Um einen DEA zu einem RA umzuformen müssen zuerst die Gleichungen der jeweiligen Zustände aufgestellt und vereinfacht werden:\newline
+\begin{center}
+	\begin{figure}[!h]
+		\includegraphics[width=\textwidth]{Bilder/DEAzuRA1.png}
+	\end{figure}
+\end{center}
+Folglich kann man die gekürzten Gleichungen in einander einsetzen um bis zum Anfangszustand zu kommen:\newline
+\begin{center}
+	\begin{figure}[!h]
+		\includegraphics[]{Bilder/DEAzuRA2.png}
+	\end{figure}
+\end{center}
+Da $L_2$ der Endzustand ist, bekommt die Gleichung $\varepsilon$ hinzuaddiert!\newline
+Der vereinfachte Anfangszustand $L_0$ ist dann der RA zum zugehörigen DEA:\newline
+\begin{center}
+	\begin{figure}[!h]
+		\includegraphics[width=\textwidth]{Bilder/DEAzuRA3.png}
+	\end{figure}
+\end{center}
 
 \subsubsection{Minimierung}
 
@@ -140,19 +172,19 @@ TOP TEXT TOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEXTTOP TEX
 	G=($N, \sum , P, S$) mit:\\
 	\begin{description}
 		\item[N] Nichtterminalsymbole. Diese können für Regeln verwendet werden, aber dürfen nicht selbst im abgeleiteten Wort stehen.
-		\item[P] Ableitungsregeln. Bsp.: P=$\{ S \rightarrow Aa | \epsilon , A \rightarrow a \} $ 
+		\item[P] Ableitungsregeln. Bsp.: P=$\{ S \rightarrow Aa | \varepsilon , A \rightarrow a \} $ 
 		\item[S] Startsymbol (ist nichtterminel)
 	\end{description}
 
 	\subsection{Typ0 unbeschränkt}
     \subsection{Typ1 Monoton}
-      $\alpha \rightarrow \beta$ mit $| \alpha | \leq  | \beta |$ und Ausnahme $S \rightarrow \epsilon$, wenn S auf keiner rechten Seite ist.
+      $\alpha \rightarrow \beta$ mit $| \alpha | \leq  | \beta |$ und Ausnahme $S \rightarrow \varepsilon$, wenn S auf keiner rechten Seite ist.
     \subsection{Typ2 Kontextfreie}
       A $\rightarrow \beta$ mit A $\in$ N und $\beta \in V$*
     \subsection{Typ3 rechtsregulär/-linear}
-      A $\rightarrow$ cB mit A $\in$ N; B $\in$ N $\cup$ $\{ \epsilon \}$; c $\in \sum \cup \{ \epsilon \}$
+      A $\rightarrow$ cB mit A $\in$ N; B $\in$ N $\cup$ $\{ \varepsilon \}$; c $\in \sum \cup \{ \varepsilon \}$
     \subsection{Chomskynormalform CNF}
-      Ohne $\epsilon$ und unnötige Regeln und Terminalsymbole.\\
+      Ohne $\varepsilon$ und unnötige Regeln und Terminalsymbole.\\
 
 \section{Turing Maschine}
 	Automaten mit endlosem Einleseband.\\
