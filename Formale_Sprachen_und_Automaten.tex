@@ -178,24 +178,25 @@ Der vereinfachte Anfangszustand $L_0$ ist dann der RA zum zugehörigen DEA:\newl
 
 	\subsection{Typ0 unbeschränkt}
     \subsection{Typ1 Monoton}
-      $\alpha \rightarrow \beta$ mit $| \alpha | \leq  | \beta |$ und Ausnahme $S \rightarrow \varepsilon$, wenn S auf keiner rechten Seite ist.
+    $\alpha \rightarrow \beta$ mit $| \alpha | \leq  | \beta |$ und Ausnahme $S \rightarrow \varepsilon$, wenn S auf keiner rechten Seite ist.
     \subsection{Typ2 Kontextfreie}
-      A $\rightarrow \beta$ mit A $\in$ N und $\beta \in V$* \\
-	  \subsubsection{Cocke-Younger-Kasami(CYK)-Algorythmus}
-	  	Entscheidet Wortproblem für kontextfreie Grammatiken in CNF. Bsp.:\\
-		\includegraphics[scale=0.3]{Bilder/cyk-Algo.png}
-		\begin{enumerate}
-			\item Wort unter Tabelle schreiben 
-			\item Herleitungen in Tabellen-Diagonale eintragen
-			\item Herleitungen der Teilwörter als Menge eintragen (alle Möglichkeiten)
-		\end{enumerate}
+	A $\rightarrow \beta$ mit A $\in$ N und $\beta \in V$* 
     \subsection{Typ3 rechtsregulär/-linear}
-      A $\rightarrow$ cB mit A $\in$ N; B $\in$ N $\cup$ $\{ \varepsilon \}$; c $\in \sum \cup \{ \varepsilon \}$
-    \subsection{Chomskynormalform CNF}
-      Zur Entscheidung des Wortproblems. Nur Regeln mit Syntax: \\
-	  1. $A \rightarrow BC$ oder 2. $A \rightarrow a$ mit $A,B,C \in Nichtterminalsymbole \; \wedge \; a \in Terminalsymbole$ und $S \rightarrow \epsilon$, wenn S auf keiner Rechten Seite ist.\\
-	  \textbf{Vorgehen:}
-	  \begin{enumerate}
+	A $\rightarrow$ cB mit A $\in$ N; B $\in$ N $\cup$ $\{ \varepsilon \}$; c $\in \sum \cup \{ \varepsilon \}$
+	\subsection{Cocke-Younger-Kasami(CYK)-Algorythmus}
+	Entscheidet Wortproblem für kontextfreie Grammatiken in CNF. Bsp.:\\
+	\includegraphics[scale=0.3]{Bilder/cyk-Algo.png}
+	\begin{enumerate}
+		\item Wort unter Tabelle schreiben 
+		\item Umgekehrte Regeln bilden (optional)
+		\item Herleitungen in Tabellen-Diagonale eintragen
+		\item Herleitungen der Teilwörter als Menge eintragen (alle Möglichkeiten)
+	\end{enumerate}
+	\subsection{Chomskynormalform CNF}
+	Zur Entscheidung des Wortproblems. Nur Regeln mit Syntax: \\
+	1. $A \rightarrow BC$ oder 2. $A \rightarrow a$ mit $A,B,C \in Nichtterminalsymbole \; \wedge \; a \in Terminalsymbole$ und $S \rightarrow \epsilon$, wenn S auf keiner Rechten Seite ist.\\
+	\textbf{Vorgehen:}
+	\begin{enumerate}
 		\item Epsilon-Regeln entfernen
 		\begin{enumerate}
 			\item Erstelle Liste L mit $A\rightarrow \epsilon$-Regeln und allen Regeln, die auf Nichtterminalsymbole in L zeigen.
@@ -211,7 +212,7 @@ Der vereinfachte Anfangszustand $L_0$ ist dann der RA zum zugehörigen DEA:\newl
 		\item überflüssige Symbole entfernen
 		\item Einzelne Nichtterminalsymbole auf rechter Seite ersetzen 
 		\item Rechte Seite mit Hilfssymbolen kürzen
-	  \end{enumerate}
+	\end{enumerate}
 
 \section{Turing Maschine}
 	Automaten mit endlosem Einleseband.\\
