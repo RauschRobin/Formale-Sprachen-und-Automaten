@@ -66,6 +66,9 @@ Sprachen können ebenfalls potenziert werden: $L^2 = \{ab, ba\} \cdot \{ab, ba\}
 Für ein Alphabet $\varSigma$ und eine formale Sprache $L \subseteq \varSigma^*$ ist der Operator Kleene Stern wie folgt definiert: $L^* = \underset{n \in \mathbb{N}}{\bigcup} L^n$.\newline \newline
 Beispiel: Sei $L_1 = \{ ab, ba\}$, dann $L^* = \{\varepsilon, ab, ba, abab, abba, baab, baba, ababab, ...\}$.
 
+\subsection{Überblick}
+\includegraphics[width=\textwidth]{Bilder/Zusammenhang_Sprache_Grammatik_Maschinenmodell.png}
+
 \section{Reguläre Sprachen und endliche Ausdrücke}
 \subsection{Reguläre Ausdrücke}
 Ein regulärer Ausdruck über $\varSigma$ beschreibt eine formale Sprache.\newline
@@ -90,6 +93,9 @@ Nicht alle Operatoren sind für alle Typen zulässig:
 Endliche Automaten sind eine andere Darstellung einer regulären Sprache. Endliche Ausdrücke lassen sich in Reguläre Ausdrücke umformen. Genauso auch anders herum.\newline
 Endliche Automaten erkennen regulären Sprachen. Endliche Ausdrücke lassen sich in Reguläre Ausdrücke umformen. Genauso auch anders herum.\newline
 Endliche Automaten lassen sich sowohl deterministisch als auch nicht-deterministisch darstellen.
+
+\subsubsection{Komplement}
+Wird durch vertauschen von End- und Nichtendzuständen erzeugt.
 
 \subsubsection{Deterministische endliche Automaten(DEA)}
 Ein DEA hat endlich viele Zustände. Jeder mögliche Übergang muss hierbei behandelt werden können. D.h. für das Alphabet $\varSigma_{ab}$ muss von jedem Zustand sowohl ein $a$, als auch ein $b$ Übergang gegeben sein. Der Automat beginnt im Startzustand und muss im Endzustand enden. Wenn der Automat sich in einem Nicht-Endzustand befindet, befindet sich das Wort nicht in der Sprache, welche vom Automaten abgebildet wird.\newline
@@ -161,7 +167,17 @@ Der vereinfachte Anfangszustand $L_0$ ist dann der RA zum zugehörigen DEA:\newl
 	\end{figure}
 \end{center}
 
+\subsubsection{RA zu NEA}
+
+\subsubsection{NEA zu DEA}
+
+\subsubsection{DEA zu RLG}
+
+\subsubsection{RLG zu NEA}
+
 \subsubsection{Minimierung}
+
+\subsubsection{Produktautomaten}
 
 \subsection{Nicht-reguläre Sprachen und das Pumping-Lemma}
 
@@ -214,6 +230,15 @@ Der vereinfachte Anfangszustand $L_0$ ist dann der RA zum zugehörigen DEA:\newl
 		\item Rechte Seite mit Hilfssymbolen kürzen
 	\end{enumerate}
 
+\section{Kellerautomaten}
+	Endlicher Automat mit unendlichem Stack, auf welchem nur der oberste/neueste Buchstabe gelesen, ">gepusht"< oder ">gepopt"< werden kann.\\
+	\textbf{Syntax:} A=(Q, $\Sigma$, $\Gamma$, $\Delta$, $q_0$, Z)
+	\begin{description}
+		\item[$\Gamma$] Stack-Alphabet
+		\item[$q_0$] Startzustand
+		\item[Z] Startstacksymbol  
+	\end{description}
+
 \section{Turing Maschine}
 	Automaten mit endlosem Einleseband.\\
 	Terminiert wenn Endzustand erreicht und Einleseband nicht verschiebbar ist.\\
@@ -224,12 +249,22 @@ Der vereinfachte Anfangszustand $L_0$ ist dann der RA zum zugehörigen DEA:\newl
 		\item[F] Endzustände
 	\end{description}
 
+	\subsection{K-Band zu 1-Band}
+
+	\subsection{Linear beschränkter Automat}
+		Touring Automat mit beschränktem Band durch Start- und Endsymbol (Band: " $>abaab<$ ")
+
 \section{Entscheidbarkeit}
 	\subsection{Entscheidbar}
 
 	\subsection{Unentscheidbar}
+		Halteproblem:
 
 	\subsection{Semi-entscheidbar}
+
+	\subsection{Postsches KorrespondenzProblem (PKP)}
+		Endliche Folge an Wortpaaren, mit nichtleeren Wörtern, über endlichem Alphabet.\\
+		\textbf{Syntax:} P=($(l_1, r_1), (l_2, r_2), ...(l_n, r_n)$) \hfill \textbf{Lösung:} $l_{i_1} \cdot l_{i_2} \cdot ... \cdot l_{i_n} = r_{i_1} \cdot r_{i_2} \cdot ... \cdot r_{i_n}$
 
 \section{Berechenbarkeit}
 
