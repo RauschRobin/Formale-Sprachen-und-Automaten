@@ -206,7 +206,35 @@ Bei komplexen RAs werden die RAs als "BlackBox" dargestellt, dabei werden die Ü
 \end{center}
 
 \subsubsection{NEA zu DEA}
-´
+	Transformationstabelle mit neuen Zuständen erstellen. 
+	Zustandsmengen als neue Zustände definieren. 
+	Enthält Menge Endzustand, ist der neue Zustand ein Endzustand.\\\\
+	\begin{minipage}[c]{0.5\textwidth}
+		\textbf{Übergangstabelle:}\\
+		\begin{tabular}[h]{c | c | c}
+			& 0 & 1\\
+			\hline
+			$q_0$ & $\{q_0, q_1\}$ & $q_0$\\
+			\hline
+			$q_1$ & $\varnothing$ & $q_2$\\
+			\hline
+			$q_2$* & $\varnothing$ & $\varnothing $
+		\end{tabular}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[c]{0.5\textwidth}
+		\textbf{Transformationstabelle:}\\
+		\begin{tabular}[h]{c | c | c}
+			& 0 & 1\\
+			\hline
+			$q_0$ & $\{q_0, q_1\}$ & $q_0$\\
+			\hline
+			$\{q_0, q_1\}$ & $\{q_0, q_1\}$ & $\{q_0, q_2\}$\\
+			\hline
+			${q_0, q_2}$* & $\{q_0, q_1\}$ & $q_0$
+		\end{tabular}
+	\end{minipage}
+
 \subsubsection{DEA zu RLG}
 
 \subsubsection{RLG zu NEA}
