@@ -236,8 +236,18 @@ Bei komplexen RAs werden die RAs als "BlackBox" dargestellt, dabei werden die Ü
 	\end{minipage}
 
 \subsubsection{DEA zu RLG}
+	\textbf{A} = (Q, $\sum$, $\delta$, $q_0$, F) $\Rightarrow$ \textbf{G} = (N, $\sum$, P, S)\\
+	mit: \textbf{N} = Q, \textbf{S} = $q_0$ und \textbf{P} = $\{p \rightarrow cq | \delta (p, c) = q\} \cup \{p \rightarrow \epsilon | p \in F\}$ \\
+	Bsp.: Kommt man mit a von Zustand 0 zu Endzustand 1: P=$\{ 0 \rightarrow a1, 1 \rightarrow \epsilon \}$
 
 \subsubsection{RLG zu NEA}
+	\textbf{G} = (N, $\sum$, P, S) $\Rightarrow$ \textbf{A} = (Q, $\sum$, $\delta$, $q_0$, F)  \\
+	mit: \textbf{Q} = N $\cup\{f \; | f \notin N\}$, \textbf{F} = $\{f\}$, $q_0$ = S und\\
+	$\Delta$ = $\{ (A, c, B) | A \rightarrow cB \in P\} \cup \\
+	\{ (A, c, f) | A \rightarrow c \in P\} \cup \\
+	\{ (A, \epsilon, B) | A \rightarrow B \in P\} \cup \\ 
+	\{ (A, \epsilon, f) | A \rightarrow \epsilon \in P\}$
+	Prinzip: Regeln umwandeln und Endzustände $f$ hinzufügen.
 
 \subsubsection{Minimierung}
 
