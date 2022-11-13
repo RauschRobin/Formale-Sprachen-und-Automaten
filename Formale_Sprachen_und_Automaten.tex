@@ -236,8 +236,18 @@ Bei komplexen RAs werden die RAs als "BlackBox" dargestellt, dabei werden die Ü
 	\end{minipage}
 
 \subsubsection{DEA zu RLG}
+	\textbf{A} = (Q, $\sum$, $\delta$, $q_0$, F) $\Rightarrow$ \textbf{G} = (N, $\sum$, P, S)\\
+	mit: \textbf{N} = Q, \textbf{S} = $q_0$ und \textbf{P} = $\{p \rightarrow cq | \delta (p, c) = q\} \cup \{p \rightarrow \epsilon | p \in F\}$ \\
+	Bsp.: Kommt man mit a von Zustand 0 zu Endzustand 1: P=$\{ 0 \rightarrow a1, 1 \rightarrow \epsilon \}$
 
 \subsubsection{RLG zu NEA}
+	\textbf{G} = (N, $\sum$, P, S) $\Rightarrow$ \textbf{A} = (Q, $\sum$, $\delta$, $q_0$, F)  \\
+	mit: \textbf{Q} = N $\cup\{f \; | f \notin N\}$, \textbf{F} = $\{f\}$, $q_0$ = S und\\
+	$\Delta$ = $\{ (A, c, B) | A \rightarrow cB \in P\} \cup \\
+	\{ (A, c, f) | A \rightarrow c \in P\} \cup \\
+	\{ (A, \epsilon, B) | A \rightarrow B \in P\} \cup \\ 
+	\{ (A, \epsilon, f) | A \rightarrow \epsilon \in P\}$
+	Prinzip: Regeln umwandeln und Endzustände $f$ hinzufügen.
 
 \subsubsection{Minimierung}
 
@@ -393,12 +403,27 @@ Ist $A_r$ zyklisch folgt, dass $\mathcal{L}(A)$ unendlich ist
 
 \section{Kellerautomaten}
 	Endlicher Automat mit unendlichem Stack, auf welchem nur der oberste/neueste Buchstabe gelesen, ">gepusht"< oder ">gepopt"< werden kann.\\
-	\textbf{Syntax:} A=(Q, $\Sigma$, $\Gamma$, $\Delta$, $q_0$, Z)
-	\begin{description}
-		\item[$\Gamma$] Stack-Alphabet
-		\item[$q_0$] Startzustand
-		\item[Z] Startstacksymbol  
-	\end{description}
+	\textbf{Syntax:} A=(Q, $\Sigma$, $\Gamma$, $\Delta$, $q_0$, Z)\\\\
+	\begin{minipage}[c]{0.5\textwidth}
+		\begin{description}
+			\item[$\Gamma$] Stack-Alphabet
+			\item[$q_0$] Startzustand
+			\item[Z] Startstacksymbol  
+			\item[$\Delta$] Regeln in Tabellenform $\Rightarrow$
+		\end{description}
+		Im Graph $\Delta$-Regeln ohne Zustände angeben:
+	\end{minipage}
+	\begin{minipage}[c]{0.5\textwidth}
+		$\Delta$\textbf{-Bsp.:}\\
+		\begin{tabular}[h]{c|c|c|c|c}
+			Q & $\sum$ & $\Gamma$ & $\Gamma$* & Q\\
+			\hline
+			(0, & a, & A, & AA, & 0)\\
+			(0, & b, & A, & $\epsilon$, & 1)\\
+			&&...
+		\end{tabular}
+		\includegraphics[scale=0.3]{Bilder/KellerAutomat.png}
+	\end{minipage}
 
 \section{Turing Maschine}
 	Automaten mit endlosem Einleseband.\\
@@ -426,6 +451,9 @@ Ist $A_r$ zyklisch folgt, dass $\mathcal{L}(A)$ unendlich ist
 	\subsection{Postsches KorrespondenzProblem (PKP)}
 		Endliche Folge an Wortpaaren, mit nichtleeren Wörtern, über endlichem Alphabet.\\
 		\textbf{Syntax:} P=($(l_1, r_1), (l_2, r_2), ...(l_n, r_n)$) \hfill \textbf{Lösung:} $l_{i_1} \cdot l_{i_2} \cdot ... \cdot l_{i_n} = r_{i_1} \cdot r_{i_2} \cdot ... \cdot r_{i_n}$
+	
+	\subsection{Problemreduzierung}
+		\includegraphics[scale=0.4]{Bilder/Zusammenfassung_Unentscheidbarkeiten.png}
 
 \section{Berechenbarkeit}
 
