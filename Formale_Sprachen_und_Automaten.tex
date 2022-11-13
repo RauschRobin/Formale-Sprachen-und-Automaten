@@ -316,6 +316,44 @@ Weil $k>0$ wissen wir, das das $x \notin L$ und somit auch das L keine reguläre
 
 Eine Formale Sprache L ist regulär, wenn es einen \textbf{regulären Ausdruck}, einen \textbf{NEA} oder einen \textbf{DEA} gibt.
 
+\subsubsection{Leerheitsproblem}
+
+\begin{enumerate}
+\item Startzustand als erreichbar markieren
+\item Markiere iterativ alle erreichbaren Zustände als erreichbar
+\item Stoppe, wenn ein Endzustand, oder keine´ neuen erreichbaren Zustände
+\item Falls ein Endzustand erreichbar ist: Ausgabe „nicht leer“
+\item Sonst: Ausgabe „leer“
+\end{enumerate}
+
+\subsubsection{Wortproblem}
+
+Man simuliert den Lauf von A auf ein Wort w. Dass heißt man versucht vom Startzustand auf das Wort w zu kommen.
+
+\subsubsection{Äquivalenzproblem}
+
+Herausfinden, ob zwei RA's $r_1$ und $r_2$ gleich sind.
+
+\begin{enumerate}
+\item Zwei NEA's erstellen($A_1, A_2$)
+\item NEA's ind DEA's transformieren($D_1, D_2$)
+\item DEA's Minimieren ($M_1, M_2$)
+\item Zustände von $M_1$ und $M_2$ umbennen.
+\end{enumerate}
+~\newline
+Wenn $M_1 \equiv M_2$ dann gilt auch $r_1 \equiv r_2$
+
+\subsubsection{Endlichkeitsproblem}
+
+\begin{enumerate}
+\item Markiere iterativ alle vom Startzustand aus erreichbaren Zustände als erreichbar.
+\item Markiere iterativ alle Zustände, von denen aus ein $q \in F$ erreichbar ist, als terminierend
+\item Sei $A_r$ der Automat, der nur die erreichbaren und terminierenden Zustände von A enthält
+(gleiche Übergänge)
+\end{enumerate}
+~\newline
+Ist $A_r$ zyklisch folgt, dass $\mathcal{L}(A)$ unendlich ist 
+
 \section{Chomsky Grammatiken und kontextfreie Sprachen}
 	Gramatiken erzeugen formale Sprachen dar.\\
 	G=($N, \sum , P, S$) mit:\\
