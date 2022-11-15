@@ -66,7 +66,9 @@
 	Für ein Alphabet $\varSigma$ und eine formale Sprache $L \subseteq \varSigma^*$ ist der Operator Kleene Stern wie folgt definiert: $L^* = \underset{n \in \mathbb{N}}{\bigcup} L^n$.\newline \newline
 	Beispiel: Sei $L_1 = \{ ab, ba\}$, dann $L^* = \{\varepsilon, ab, ba, abab, abba, baab, baba, ababab, ...\}$.
 
-
+	\subsection{Überblick}
+	\includegraphics[width=\textwidth]{Bilder/Zusammenhang_Sprache_Grammatik_Maschinenmodell.png}
+	
 \section{Reguläre Sprachen und endliche Ausdrücke}
 	\subsection{Reguläre Ausdrücke}
 	Ein regulärer Ausdruck über $\varSigma$ beschreibt eine formale Sprache.\newline
@@ -175,7 +177,7 @@
 		\begin{figure}[!h]
 			\includegraphics[width=\textwidth]{Bilder/KonkatenationNEA.png}
 		\end{figure}
-	\end{center}´
+	\end{center}
 	\begin{center}
 		\begin{figure}[!h]
 			\includegraphics[width=\textwidth]{Bilder/VereinigungNEA.png}
@@ -187,6 +189,8 @@
 			\includegraphics[width=\textwidth]{Bilder/KleeneNEA.png}
 		\end{figure}
 	\end{center}
+
+	\newpage
 
 	\subsubsection{NEA zu DEA}
 	Zuerst wird eine Transformationstabelle mit neuen Zuständen erstellt. Danach werden die Zustandsmengen als neue Zustände definiert und wenn die Menge einen Endzustand enthält, ist der neue Zustand ein Endzustand.\\\\
@@ -217,7 +221,10 @@
 		$\{q_0, q_1\}$ = p\\
 		$\{q_0, q_2\}$* = r
 	\end{minipage}
-	\includegraphics[width=\textwidth]{Bilder/NEAzuDEA.PNG}
+	
+	\begin{figure}[!h]
+		\includegraphics[width=\textwidth]{Bilder/NEAzuDEA.PNG}
+	\end{figure}
 
 	\subsection{Minimierung}
 	Es wird überprüft ob Zustände erreichbar sind, dafür wird vom Startzustand aus jeder Übergang verfolgt und jeder erreichbare Zustand markiert. Alle unmarkierten Zustände können dann einfach aus dem Automaten entfernt werden, da diese Mülleimer Zustände sind. Anschließend muss überprüft werden, ob die Zustände unterscheidbar sind.
@@ -325,42 +332,8 @@
     \subsubsection{Typ2 Kontextfreie}
 	A $\rightarrow \beta$ mit A $\in$ N und $\beta \in V$* 
 
-    \subsubsection{Typ3 rechtsregulär/-linear}
+    \subsubsection{Typ3 Rechtsregulär/-linear (RLG)}
 	A $\rightarrow$ cB mit A $\in$ N; B $\in$ N $\cup$ $\{ \varepsilon \}$; c $\in \sum \cup \{ \varepsilon \}$
-
-	\subsection{Cocke-Younger-Kasami(CYK)-Algorythmus}
-	Entscheidet Wortproblem für kontextfreie Grammatiken in CNF. Bsp.:\\
-	\includegraphics[scale=0.3]{Bilder/cyk-Algo.png}
-	\begin{enumerate}
-		\item Wort unter Tabelle schreiben 
-		\item Umgekehrte Regeln bilden (optional)
-		\item Herleitungen in Tabellen-Diagonale eintragen
-		\item Herleitungen der Teilwörter als Menge eintragen (alle Möglichkeiten)
-	\end{enumerate}
-
-	\subsection{Chomskynormalform CNF}
-	Zur Entscheidung des Wortproblems. Nur Regeln mit Syntax: \\
-	1. $A \rightarrow BC$ oder 2. $A \rightarrow a$ mit $A,B,C \in Nichtterminalsymbole \; \wedge \; a \in Terminalsymbole$ und $S \rightarrow \epsilon$, wenn S auf keiner Rechten Seite ist.\\
-	\textbf{Vorgehen:}
-	\begin{enumerate}
-		\item Epsilon-Regeln entfernen
-		\begin{enumerate}
-			\item Erstelle Liste L mit $A\rightarrow \epsilon$-Regeln und allen Regeln, die auf Nichtterminalsymbole in L zeigen.
-			\item Ergänze rechte Seite der Regeln mit sich selbst mit eingesetztem $\epsilon$ für Nichtterminalsymbole $\in$ L
-			\item Wenn $S \in L$ füge Regel $S_0 \rightarrow S | \epsilon$ ein
-		\end{enumerate}
-		\item Kettenregel entfernen
-		\begin{enumerate}
-			\item Erstelle Listen für Kettenregeln ausgehend von jeweiligen Nichtterminalen
-			\item Ergänze Regeln mit allen Kettenregeln
-			\item Regeln kürzen
-		\end{enumerate}
-		\item überflüssige Symbole entfernen
-		\item Einzelne Nichtterminalsymbole auf rechter Seite ersetzen 
-		\item Rechte Seite mit Hilfssymbolen kürzen
-	\end{enumerate}
-
-	\subsection{Rechtslineare Grammatiken - RLG}
 
 	\subsubsection{DEA zu RLG}
 	\textbf{A} = (Q, $\sum$, $\delta$, $q_0$, F) $\Rightarrow$ \textbf{G} = (N, $\sum$, P, S)\\
@@ -400,6 +373,38 @@
 		\includegraphics[scale=0.3]{Bilder/KellerAutomat.png}
 	\end{minipage}
 
+	\subsection{Cocke-Younger-Kasami(CYK)-Algorythmus}
+	Entscheidet Wortproblem für kontextfreie Grammatiken in CNF. Bsp.:\\
+	\includegraphics[scale=0.3]{Bilder/cyk-Algo.png}
+	\begin{enumerate}
+		\item Wort unter Tabelle schreiben 
+		\item Umgekehrte Regeln bilden (optional)
+		\item Herleitungen in Tabellen-Diagonale eintragen
+		\item Herleitungen der Teilwörter als Menge eintragen (alle Möglichkeiten)
+	\end{enumerate}
+
+	\subsection{Chomskynormalform CNF}
+	Zur Entscheidung des Wortproblems. Nur Regeln mit Syntax: \\
+	1. $A \rightarrow BC$ oder 2. $A \rightarrow a$ mit $A,B,C \in Nichtterminalsymbole \; \wedge \; a \in Terminalsymbole$ und $S \rightarrow \epsilon$, wenn S auf keiner Rechten Seite ist.\\
+	\textbf{Vorgehen:}
+	\begin{enumerate}
+		\item Epsilon-Regeln entfernen
+		\begin{enumerate}
+			\item Erstelle Liste L mit $A\rightarrow \epsilon$-Regeln und allen Regeln, die auf Nichtterminalsymbole in L zeigen.
+			\item Ergänze rechte Seite der Regeln mit sich selbst mit eingesetztem $\epsilon$ für Nichtterminalsymbole $\in$ L
+			\item Wenn $S \in L$ füge Regel $S_0 \rightarrow S | \epsilon$ ein
+		\end{enumerate}
+		\item Kettenregel entfernen
+		\begin{enumerate}
+			\item Erstelle Listen für Kettenregeln ausgehend von jeweiligen Nichtterminalen
+			\item Ergänze Regeln mit allen Kettenregeln
+			\item Regeln kürzen
+		\end{enumerate}
+		\item überflüssige Symbole entfernen
+		\item Einzelne Nichtterminalsymbole auf rechter Seite ersetzen 
+		\item Rechte Seite mit Hilfssymbolen kürzen
+	\end{enumerate}
+	
 	\subsection{Eigenschaften kontextfreier Sprachen}
 	fehlt
 
