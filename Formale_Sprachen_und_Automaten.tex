@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+ \documentclass[12pt,a4paper]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
@@ -66,6 +66,9 @@ Sprachen können ebenfalls potenziert werden: $L^2 = \{ab, ba\} \cdot \{ab, ba\}
 Für ein Alphabet $\varSigma$ und eine formale Sprache $L \subseteq \varSigma^*$ ist der Operator Kleene Stern wie folgt definiert: $L^* = \underset{n \in \mathbb{N}}{\bigcup} L^n$.\newline \newline
 Beispiel: Sei $L_1 = \{ ab, ba\}$, dann $L^* = \{\varepsilon, ab, ba, abab, abba, baab, baba, ababab, ...\}$.
 
+\subsection{Überblick}
+\includegraphics[width=\textwidth]{Bilder/Zusammenhang_Sprache_Grammatik_Maschinenmodell.png}
+
 \section{Reguläre Sprachen und endliche Ausdrücke}
 \subsection{Reguläre Ausdrücke}
 Ein regulärer Ausdruck über $\varSigma$ beschreibt eine formale Sprache.\newline
@@ -90,6 +93,9 @@ Nicht alle Operatoren sind für alle Typen zulässig:
 Endliche Automaten sind eine andere Darstellung einer regulären Sprache. Endliche Ausdrücke lassen sich in Reguläre Ausdrücke umformen. Genauso auch anders herum.\newline
 Endliche Automaten erkennen regulären Sprachen. Endliche Ausdrücke lassen sich in Reguläre Ausdrücke umformen. Genauso auch anders herum.\newline
 Endliche Automaten lassen sich sowohl deterministisch als auch nicht-deterministisch darstellen.
+
+\subsubsection{Komplement}
+Wird durch vertauschen von End- und Nichtendzuständen erzeugt.
 
 \subsubsection{Deterministische endliche Automaten(DEA)}
 Ein DEA hat endlich viele Zustände. Jeder mögliche Übergang muss hierbei behandelt werden können. D.h. für das Alphabet $\varSigma_{ab}$ muss von jedem Zustand sowohl ein $a$, als auch ein $b$ Übergang gegeben sein. Der Automat beginnt im Startzustand und muss im Endzustand enden. Wenn der Automat sich in einem Nicht-Endzustand befindet, befindet sich das Wort nicht in der Sprache, welche vom Automaten abgebildet wird.\newline
@@ -161,11 +167,192 @@ Der vereinfachte Anfangszustand $L_0$ ist dann der RA zum zugehörigen DEA:\newl
 	\end{figure}
 \end{center}
 
+\subsubsection{RA zu NEA}
+Aus den elementaren RA können einfach NEAs erstellt werden.
+\begin{center}
+	\begin{figure}[!h]
+		\includegraphics[width=0.8\textwidth]{Bilder/ElementareRAzuDEA.png}
+	\end{figure}
+\end{center}
+Bei komplexen RAs werden die RAs als "BlackBox" dargestellt, dabei werden die Übergänge gepunktet dargestellt.
+
+\begin{center}
+	\begin{figure}[!h]
+		\includegraphics[width=.7\textwidth]{Bilder/KomplexeRABeispiel.png}
+	\end{figure}
+\end{center}
+
+\begin{center}
+	\begin{figure}[!h]
+		\includegraphics[width=.7\textwidth]{Bilder/BlackBoxExample.png}
+	\end{figure}
+\end{center}
+
+\begin{center}
+	\begin{figure}[!h]
+		\includegraphics[width=\textwidth]{Bilder/KonkatenationNEA.png}
+	\end{figure}
+\end{center}´
+\begin{center}
+	\begin{figure}[!h]
+		\includegraphics[width=\textwidth]{Bilder/VereinigungNEA.png}
+	\end{figure}
+\end{center}
+
+\begin{center}
+	\begin{figure}[!h]
+		\includegraphics[width=\textwidth]{Bilder/KleeneNEA.png}
+	\end{figure}
+\end{center}
+
+\subsubsection{NEA zu DEA}
+	Transformationstabelle mit neuen Zuständen erstellen. 
+	Zustandsmengen als neue Zustände definieren. 
+	Enthält Menge Endzustand, ist der neue Zustand ein Endzustand.\\\\
+	\begin{minipage}[c]{0.5\textwidth}
+		\textbf{Übergangstabelle:}\\
+		\begin{tabular}[h]{c | c | c}
+			& 0 & 1\\
+			\hline
+			$q_0$ & $\{q_0, q_1\}$ & $q_0$\\
+			\hline
+			$q_1$ & $\varnothing$ & $q_2$\\
+			\hline
+			$q_2$* & $\varnothing$ & $\varnothing $
+		\end{tabular}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[c]{0.5\textwidth}
+		\textbf{Transformationstabelle:}\\
+		\begin{tabular}[h]{c | c | c}
+			& 0 & 1\\
+			\hline
+			$q_0$ & $\{q_0, q_1\}$ & $q_0$\\
+			\hline
+			$\{q_0, q_1\}$ & $\{q_0, q_1\}$ & $\{q_0, q_2\}$\\
+			\hline
+			${q_0, q_2}$* & $\{q_0, q_1\}$ & $q_0$
+		\end{tabular}
+	\end{minipage}
+
+\subsubsection{DEA zu RLG}
+	\textbf{A} = (Q, $\sum$, $\delta$, $q_0$, F) $\Rightarrow$ \textbf{G} = (N, $\sum$, P, S)\\
+	mit: \textbf{N} = Q, \textbf{S} = $q_0$ und \textbf{P} = $\{p \rightarrow cq | \delta (p, c) = q\} \cup \{p \rightarrow \epsilon | p \in F\}$ \\
+	Bsp.: Kommt man mit a von Zustand 0 zu Endzustand 1: P=$\{ 0 \rightarrow a1, 1 \rightarrow \epsilon \}$
+
+\subsubsection{RLG zu NEA}
+	\textbf{G} = (N, $\sum$, P, S) $\Rightarrow$ \textbf{A} = (Q, $\sum$, $\delta$, $q_0$, F)  \\
+	mit: \textbf{Q} = N $\cup\{f \; | f \notin N\}$, \textbf{F} = $\{f\}$, $q_0$ = S und\\
+	$\Delta$ = $\{ (A, c, B) | A \rightarrow cB \in P\} \cup \\
+	\{ (A, c, f) | A \rightarrow c \in P\} \cup \\
+	\{ (A, \epsilon, B) | A \rightarrow B \in P\} \cup \\ 
+	\{ (A, \epsilon, f) | A \rightarrow \epsilon \in P\}$
+	Prinzip: Regeln umwandeln und Endzustände $f$ hinzufügen.
+
 \subsubsection{Minimierung}
 
-\subsection{Nicht-reguläre Sprachen und das Pumping-Lemma}
+Es wird überprüft ob Zustände erreichbar sind, dafür wird vom Startzustand aus jeder Übergang verfolgt und jeder erreichbare Zustand markiert. Alle unmarkierten Zustände können dann einfach aus dem Automaten entfernt werden, da diese Mülleimer Zustände sind.
+Anschließend muss überprüft werden, ob die Zustände unterscheidbar sind.
+Dafür wird eine Tabelle erstellt, welche alle Zustände beinhaltet, die Diagonale kann dabei entfernt werden, im Anschluss werden bei den Endzuständen alle nichtendzustände entfernt.
+Danach müssen die Übergänge getestet werden. Dazu wird für jeder freie Feld in der Tabelle die Übergänge geprüft.
+\newline
+\begin{center}
+	\begin{figure}[!h]
+		\includegraphics[width=\textwidth]{Bilder/MinimizingUbergangBsp.png}
+	\end{figure}
+\end{center}
+~\newline
+Hier wurden die Übergänge für (1,0),(2,0),(2,1),(4,3) geprüft. Bei (1,0) führt der Übergang a beim Zustand 0 zu 1 und beim Zustand 1 zu 3, (1,3) ist aber schon markiert, deshalb wird in die Zelle eine eins geschrieben. Wenn der Übergang nicht schon markiert wurde kann eine 0 in die Zelle geschrieben werden. 
+\newline
+\begin{center}
+	\begin{figure}[!h]
+		\includegraphics[width=\textwidth]{Bilder/MinimizingVereinigung.png}
+	\end{figure}
+\end{center}
 
+Die Zustände bei denen eine 1 Steht können zusammengefasst werden, damit ist die Minimierung auch fertig.
+
+\subsubsection{Produktautomaten}
+
+Kreuzprodukt der Zustände von $A_1$ und $A_2$ erstellen. \newline
+Für jeden Zustand die dazugehörigen Übergänge betrachten.\newline
+Dabei wird zum Beispiel für den Zustand $(z_0, q_0)$ überprüft zu welchem Zustand der Übergang 1 führt. Der Zustand $z_0$ führt mit dem Übergang 1 zum Zustand $z_1$ und $q_0$ zu $q_1$, dass heißt das der Zustand $(z_0, q_0)$ mit dem Übergang 1 zum Zustand $(z_1, q_1)$ führt.\newline
+\begin{center}
+	\begin{figure}[!h]
+		\includegraphics[width=\textwidth]{Bilder/ProduktautomatUbergang.png}
+	\end{figure}
+\end{center}
+  
+
+\subsection{Nicht-reguläre Sprachen und das Pumping-Lemma}
+\begin{enumerate}
+	\item Das gesuchte Wort s besteht aus \textbf{Prolog} u, \textbf{Zyklus} v und \textbf{Epilog} w
+	\item Der Zyklus hat mindestest die Länge 1 $v \neq \epsilon$
+	\item Prolog und Zyklus zusammen haben höchstens die Länge k
+	\item Eine beliebige Anzahl von Zyklus-Durchläufen erzeugt ein Wort der Sprache L
+\end{enumerate}
+\begin{center}
+	\begin{figure}[!h]
+		\includegraphics[width=\textwidth]{Bilder/PumpingLemma.png}
+	\end{figure}
+\end{center}
+~\\~\\~\\
+Hier ein Beispiel:
+
+$$L=\{a^n b^m ~|~ n<m\}$$ \newline
+Das Wort ist damit $a^n b^m$, dieses Word muss in u, v und w aufgeteilt werden um das Pumping Lemma anzuwenden. \newline
+$x = a^nb^{n+1} \in L$ \newline
+$u = a^{n-k}$ \newline
+$v = a^k$ \newline
+$w = b^m$ \newline
+Wir teilen u, v und w so auf, dass wir nun das Pumping Lemma anwenden können, wobei k>0 ist.
+$$x = a^{n-k}(a^k)^ib^{n+1}$$
+Laut dem Pumping Lemma können wir jetzt k beliebig wählen um das erzeugte Wort sollte immer noch ein Teil der Sprache L sein. i steht dabei für die Iterationen, der des Zyklus. \newline
+Also wählen wir $ i = 3$ und Formen die gleichen um.
+$$x = a^{n + k(-1 +3)}b^{n+1}$$
+$$x = a^{n + 2k}b^{n+1}$$
+Weil $k>0$ wissen wir, das das $x \notin L$ und somit auch das L keine reguläre Sprache ist.
 \subsection{Eigenschaften regulärer Sprachen}
+
+Eine Formale Sprache L ist regulär, wenn es einen \textbf{regulären Ausdruck}, einen \textbf{NEA} oder einen \textbf{DEA} gibt.
+
+\subsubsection{Leerheitsproblem}
+
+\begin{enumerate}
+\item Startzustand als erreichbar markieren
+\item Markiere iterativ alle erreichbaren Zustände als erreichbar
+\item Stoppe, wenn ein Endzustand, oder keine´ neuen erreichbaren Zustände
+\item Falls ein Endzustand erreichbar ist: Ausgabe „nicht leer“
+\item Sonst: Ausgabe „leer“
+\end{enumerate}
+
+\subsubsection{Wortproblem}
+
+Man simuliert den Lauf von A auf ein Wort w. Dass heißt man versucht vom Startzustand auf das Wort w zu kommen.
+
+\subsubsection{Äquivalenzproblem}
+
+Herausfinden, ob zwei RA's $r_1$ und $r_2$ gleich sind.
+
+\begin{enumerate}
+\item Zwei NEA's erstellen($A_1, A_2$)
+\item NEA's ind DEA's transformieren($D_1, D_2$)
+\item DEA's Minimieren ($M_1, M_2$)
+\item Zustände von $M_1$ und $M_2$ umbennen.
+\end{enumerate}
+~\newline
+Wenn $M_1 \equiv M_2$ dann gilt auch $r_1 \equiv r_2$
+
+\subsubsection{Endlichkeitsproblem}
+
+\begin{enumerate}
+\item Markiere iterativ alle vom Startzustand aus erreichbaren Zustände als erreichbar.
+\item Markiere iterativ alle Zustände, von denen aus ein $q \in F$ erreichbar ist, als terminierend
+\item Sei $A_r$ der Automat, der nur die erreichbaren und terminierenden Zustände von A enthält
+(gleiche Übergänge)
+\end{enumerate}
+~\newline
+Ist $A_r$ zyklisch folgt, dass $\mathcal{L}(A)$ unendlich ist 
 
 \section{Chomsky Grammatiken und kontextfreie Sprachen}
 	Gramatiken erzeugen formale Sprachen dar.\\
@@ -214,6 +401,30 @@ Der vereinfachte Anfangszustand $L_0$ ist dann der RA zum zugehörigen DEA:\newl
 		\item Rechte Seite mit Hilfssymbolen kürzen
 	\end{enumerate}
 
+\section{Kellerautomaten}
+	Endlicher Automat mit unendlichem Stack, auf welchem nur der oberste/neueste Buchstabe gelesen, ">gepusht"< oder ">gepopt"< werden kann.\\
+	\textbf{Syntax:} A=(Q, $\Sigma$, $\Gamma$, $\Delta$, $q_0$, Z)\\\\
+	\begin{minipage}[c]{0.5\textwidth}
+		\begin{description}
+			\item[$\Gamma$] Stack-Alphabet
+			\item[$q_0$] Startzustand
+			\item[Z] Startstacksymbol  
+			\item[$\Delta$] Regeln in Tabellenform $\Rightarrow$
+		\end{description}
+		Im Graph $\Delta$-Regeln ohne Zustände angeben:
+	\end{minipage}
+	\begin{minipage}[c]{0.5\textwidth}
+		$\Delta$\textbf{-Bsp.:}\\
+		\begin{tabular}[h]{c|c|c|c|c}
+			Q & $\sum$ & $\Gamma$ & $\Gamma$* & Q\\
+			\hline
+			(0, & a, & A, & AA, & 0)\\
+			(0, & b, & A, & $\epsilon$, & 1)\\
+			&&...
+		\end{tabular}
+		\includegraphics[scale=0.3]{Bilder/KellerAutomat.png}
+	\end{minipage}
+
 \section{Turing Maschine}
 	Automaten mit endlosem Einleseband.\\
 	Terminiert wenn Endzustand erreicht und Einleseband nicht verschiebbar ist.\\
@@ -224,12 +435,25 @@ Der vereinfachte Anfangszustand $L_0$ ist dann der RA zum zugehörigen DEA:\newl
 		\item[F] Endzustände
 	\end{description}
 
+	\subsection{K-Band zu 1-Band}
+
+	\subsection{Linear beschränkter Automat}
+		Touring Automat mit beschränktem Band durch Start- und Endsymbol (Band: " $>abaab<$ ")
+
 \section{Entscheidbarkeit}
 	\subsection{Entscheidbar}
 
 	\subsection{Unentscheidbar}
+		Halteproblem:
 
 	\subsection{Semi-entscheidbar}
+
+	\subsection{Postsches KorrespondenzProblem (PKP)}
+		Endliche Folge an Wortpaaren, mit nichtleeren Wörtern, über endlichem Alphabet.\\
+		\textbf{Syntax:} P=($(l_1, r_1), (l_2, r_2), ...(l_n, r_n)$) \hfill \textbf{Lösung:} $l_{i_1} \cdot l_{i_2} \cdot ... \cdot l_{i_n} = r_{i_1} \cdot r_{i_2} \cdot ... \cdot r_{i_n}$
+	
+	\subsection{Problemreduzierung}
+		\includegraphics[scale=0.4]{Bilder/Zusammenfassung_Unentscheidbarkeiten.png}
 
 \section{Berechenbarkeit}
 
