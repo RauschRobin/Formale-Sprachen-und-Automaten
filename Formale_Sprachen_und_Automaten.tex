@@ -406,8 +406,19 @@
 	\end{enumerate}
 	
 	\subsection{Eigenschaften kontextfreier Sprachen}
-	fehlt
-
+	
+	\textbf{Pumping-Lemma 2}\newline
+	Für jedes $s \in L$ mit $|s| \geq k$ gibt es eine Zerlegung $s = u*v *w*x*y$
+	
+	\begin{enumerate}
+	\item $vx \neq \epsilon$
+	\item $|vwx| \leq k$
+	\item $u*v^h*w*x^h*y \in L $ für alle $h \in \mathbb{N}$
+	\end{enumerate}
+Wie im normalen Pumping Lemma wird ein Wort der Sprache in teile aufgespalten, wobei v und x aufgepumpt werden, um zu zeigen, dass sie die Regeln der Sprache verletzen, wodurch gezeigt wird, dass die Sprache nicht kontextfrei ist.\newline
+Mit einer kontextfreien Sprache können Vereinigungen, Konkatenation und Kleene-Stern verwendet werden. Durchschnitt und Komplement aber nicht.\\
+Das Aquivialenzporoblme ist aber unentscheidbar.´
+	
 
 \section{Turing Maschine}
 	\subsection{Turing Maschine mit einem endlosem Einleseband}
