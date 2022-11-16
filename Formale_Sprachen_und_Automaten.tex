@@ -1,4 +1,4 @@
- \documentclass[12pt,a4paper]{article}
+\documentclass[12pt,a4paper]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
@@ -110,9 +110,7 @@
 			\includegraphics[width=\textwidth]{Bilder/DEA_Beispiel.PNG}
 		\end{figure}
 	\end{center}
-
-	\subsubsection{Komplement eines DEA}
-	Wird durch vertauschen von End- und Nichtendzuständen erzeugt.
+	\textbf{Run/Konfigurationsfolge: } 2er Tupel: (q, w) mit $q \in Q \wedge w \in \sum$*
 
 	\subsubsection{Nicht-deterministische endliche Automaten(NEA)}
 	Ein NEA hat endlich viele Zustände. Nicht jeder mögliche Übergang muss hierbei behandelt werden. D.h. für das Alphabet $\varSigma_{ab}$ reicht es, nur den $a$-Übergang, bzw. nur den $b$-Übergang zu besitzen(oder keinen). Der Automat beginnt im Startzustand und muss im Endzustand enden. Wenn der Automat sich nicht in einem Endzustand befindet, befindet sich das Wort nicht in der Sprache, welche vom Automaten abgebildet wird. Zudem gibt es $\varepsilon$-Übergänge, diese können jederzeit verwendet werden ohne ein Eingabesymbol.\newline
@@ -130,6 +128,10 @@
 			\includegraphics[width=\textwidth]{Bilder/NEA_Beispiel.png}
 		\end{figure}
 	\end{center}
+	\textbf{Run/Konfigurationsfolge: } 2er Tupel: (q, w) mit $q \in Q \wedge w \in \sum$*
+	
+	\subsubsection{Komplement eines EAs}
+	Wird durch vertauschen von End- und Nichtendzuständen erzeugt.
 
 	\subsubsection{Transformation DEA zu RA}
 	Um einen DEA zu einem RA umzuformen müssen zuerst die Gleichungen der jeweiligen Zustände aufgestellt und vereinfacht werden:\newline
@@ -339,9 +341,13 @@
 
 	\subsubsection{Kellerautomaten}
 	Endlicher Automat mit unendlichem Stack, auf welchem nur der oberste/neueste Buchstabe gelesen, ">gepusht"< oder ">gepopt"< werden kann.\\
+	\textbf{Akzeptanzbedingung: } Leerer Stack und Wort zu Ende.\\
+	\textbf{Deterministisch, } wenn in jeder Konfiguration nur eine Folgkonfiguration möglich ist.\\
 	\textbf{Syntax:} A=(Q, $\Sigma$, $\Gamma$, $\Delta$, $q_0$, Z)\\\\
 	\begin{minipage}[c]{0.5\textwidth}
 		\begin{description}
+			\item[Q] Zustände
+			\item[$\sum$] Alphabet
 			\item[$\Gamma$] Stack-Alphabet
 			\item[$q_0$] Startzustand
 			\item[Z] Startstacksymbol  
@@ -360,6 +366,7 @@
 		\end{tabular}
 		\includegraphics[scale=0.3]{Bilder/KellerAutomat.png}
 	\end{minipage}
+	\textbf{Run/Konfigurationsfolge:} 3er Tupel: (q, [Stack], Wort)
 
 	\subsection{Cocke-Younger-Kasami(CYK)-Algorythmus}
 	Entscheidet Wortproblem für kontextfreie Grammatiken in CNF. Bsp.:\\
@@ -417,10 +424,12 @@ Das Aquivialenzporoblme ist aber unentscheidbar.´
 		\item[$\Delta$] Übergangsrelationen Syntax: IST-Zustand IST-Inhalt Neuer-Inhalt Verschiebung Neuer-Zustand Bsp.: $0 \left( \begin{array}{c} a \\ \square \end{array}\right) \left( \begin{array}{c} a \\ a \end{array}\right) \left( \begin{array}{c} r \\ l \end{array} \right) 1$
 		\item[F] Endzustände
 	\end{description}
+	\textbf{Run/Konfigurationsfolge:} startet mit "> $q_0$w "<, mit w $\in \sum$* und akzeptiert, wenn "> $q \Box $ "< , mit $q \in Q$ 
+
 	\begin{center}
 	\includegraphics[width=\textwidth]{Bilder/Turing.png}
 	\end{center}
-
+	
 	\subsection{Mehrband-Turingmaschine}
 	
 	Wie eine normale Turingmaschine, mit dem Unterschied, dass es mehere Bänder gibt.
