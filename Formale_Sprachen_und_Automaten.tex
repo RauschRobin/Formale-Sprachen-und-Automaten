@@ -155,39 +155,27 @@
 	\subsubsection{RA zu NEA}
 	Aus den elementaren RA können einfach NEAs erstellt werden.
 	\begin{center}
-		\begin{figure}[!h]
 			\includegraphics[width=0.8\textwidth]{Bilder/ElementareRAzuDEA.png}
-		\end{figure}
 	\end{center}
 	Bei komplexen RAs werden die RAs als "BlackBox" dargestellt, dabei werden die Übergänge gepunktet dargestellt.
 
 	\begin{center}
-		\begin{figure}[!h]
 			\includegraphics[width=.7\textwidth]{Bilder/KomplexeRABeispiel.png}
-		\end{figure}
 	\end{center}
 
 	\begin{center}
-		\begin{figure}[!h]
 			\includegraphics[width=.7\textwidth]{Bilder/BlackBoxExample.png}
-		\end{figure}
 	\end{center}
 
 	\begin{center}
-		\begin{figure}[!h]
 			\includegraphics[width=\textwidth]{Bilder/KonkatenationNEA.png}
-		\end{figure}
 	\end{center}
 	\begin{center}
-		\begin{figure}[!h]
 			\includegraphics[width=\textwidth]{Bilder/VereinigungNEA.png}
-		\end{figure}
 	\end{center}
 
 	\begin{center}
-		\begin{figure}[!h]
 			\includegraphics[width=\textwidth]{Bilder/KleeneNEA.png}
-		\end{figure}
 	\end{center}
 
 	\newpage
@@ -222,20 +210,20 @@
 		$\{q_0, q_2\}$* = r
 	\end{minipage}
 	
-	\begin{figure}[!h]
+	\begin{center}
 		\includegraphics[width=\textwidth]{Bilder/NEAzuDEA.PNG}
-	\end{figure}
+	\end{center}
 
 	\subsection{Minimierung}
 	Es wird überprüft ob Zustände erreichbar sind, dafür wird vom Startzustand aus jeder Übergang verfolgt und jeder erreichbare Zustand markiert. Alle unmarkierten Zustände können dann einfach aus dem Automaten entfernt werden, da diese Mülleimer Zustände sind. Anschließend muss überprüft werden, ob die Zustände unterscheidbar sind.
 	Dafür wird eine Tabelle erstellt, welche alle Zustände beinhaltet. Die Diagonale kann dabei entfernt werden Im Anschluss werden bei den Endzuständen alle nichtendzustände entfernt. Danach müssen die Übergänge getestet werden. Dazu werden für jedes freie Feld in der Tabelle die Übergänge geprüft.\newline
 	\begin{center}
-		\begin{figure}[!h]
 			\includegraphics[width=\textwidth]{Bilder/MinimizingUbergangBsp.png}
-		\end{figure}
 	\end{center}
 	Hier wurden die Übergänge für (1,0),(2,0),(2,1),(4,3) geprüft. Bei (1,0) führt der Übergang a beim Zustand 0 zu 1 und beim Zustand 1 zu 3, (1,3) ist aber schon markiert, deshalb wird in die Zelle eine eins geschrieben. Wenn der Übergang nicht schon markiert wurde kann eine 0 in die Zelle geschrieben werden. \textcolor{red}{Die (Zahl, Zahl) macht kein Sinn oder?}\newline
+	\begin{center}
 	\includegraphics[width=\textwidth]{Bilder/MinimizingVereinigung.png}
+	\end{center}
 	Die Zustände bei denen eine 1 steht können zusammengefasst werden. Damit ist die Minimierung abgeschlossen.
 
 	\subsection{Nicht-reguläre Sprachen und das Pumping-Lemma}
@@ -429,10 +417,31 @@ Das Aquivialenzporoblme ist aber unentscheidbar.´
 		\item[$\Delta$] Übergangsrelationen Syntax: IST-Zustand IST-Inhalt Neuer-Inhalt Verschiebung Neuer-Zustand Bsp.: $0 \left( \begin{array}{c} a \\ \square \end{array}\right) \left( \begin{array}{c} a \\ a \end{array}\right) \left( \begin{array}{c} r \\ l \end{array} \right) 1$
 		\item[F] Endzustände
 	\end{description}
+	\begin{center}
+	\includegraphics[width=\textwidth]{Bilder/Turing.png}
+	\end{center}
 
-	\subsection{Mehrbank-Turingmaschine}
+	\subsection{Mehrband-Turingmaschine}
+	
+	Wie eine normale Turingmaschine, mit dem Unterschied, dass es mehere Bänder gibt.
+	\begin{center}
+		\includegraphics[width=\textwidth]{Bilder/MehrbandTuring.png}
+	\end{center}
+Die Maschinenmodelle „Turing-Maschine“ und „ k-Band-Turing-Maschine“ sind äquivalent.\newline
+	
+	\begin{itemize}
+	\item Nichtdeterministische Turingmaschinen
+	\begin{itemize}
+	\item können durch eine deterministische 2-Band-TM simuliert werden
+	\item beschreiben dieselbe Sprachklasse wie 1-Band-Turingmaschinen
+	\end{itemize}
+	\end{itemize}
 
 	\subsection{Unbeschränkte Grammatiken}
+
+	\begin{center}
+	\includegraphics[width=\textwidth]{Bilder/Typ0Grammatik.png}
+	\end{center}
 
 	\subsection{Linear beschränkter Automat}
 		Touring Automat mit beschränktem Band durch Start- und Endsymbol (Band: " $>abaab<$ ")
