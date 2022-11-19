@@ -34,7 +34,7 @@
 \renewcommand{\familydefault}{\sfdefault}
 
 \title{Formale Sprachen und Automaten}
-\author{\slshape Robin Rausch, Florian Maslowski}
+\author{\slshape Robin Rausch, Ozan Akzebe, Florian Maslowski}
 \date{\slshape \today}
 \begin{document}
 \pagenumbering{Roman}
@@ -157,39 +157,27 @@
 	\subsubsection{RA zu NEA}
 	Aus den elementaren RA können einfach NEAs erstellt werden.
 	\begin{center}
-		\begin{figure}[!h]
 			\includegraphics[width=0.8\textwidth]{Bilder/ElementareRAzuDEA.png}
-		\end{figure}
 	\end{center}
 	Bei komplexen RAs werden die RAs als "BlackBox" dargestellt, dabei werden die Übergänge gepunktet dargestellt.
 
 	\begin{center}
-		\begin{figure}[!h]
 			\includegraphics[width=.7\textwidth]{Bilder/KomplexeRABeispiel.png}
-		\end{figure}
 	\end{center}
 
 	\begin{center}
-		\begin{figure}[!h]
 			\includegraphics[width=.7\textwidth]{Bilder/BlackBoxExample.png}
-		\end{figure}
 	\end{center}
 
 	\begin{center}
-		\begin{figure}[!h]
 			\includegraphics[width=\textwidth]{Bilder/KonkatenationNEA.png}
-		\end{figure}
 	\end{center}
 	\begin{center}
-		\begin{figure}[!h]
 			\includegraphics[width=\textwidth]{Bilder/VereinigungNEA.png}
-		\end{figure}
 	\end{center}
 
 	\begin{center}
-		\begin{figure}[!h]
 			\includegraphics[width=\textwidth]{Bilder/KleeneNEA.png}
-		\end{figure}
 	\end{center}
 
 	\newpage
@@ -224,36 +212,36 @@
 		$\{q_0, q_2\}$* = r
 	\end{minipage}
 	
-	\begin{figure}[!h]
+	\begin{center}
 		\includegraphics[width=\textwidth]{Bilder/NEAzuDEA.PNG}
-	\end{figure}
+	\end{center}
 
 	\subsection{Minimierung}
-	Es wird überprüft ob Zustände erreichbar sind, dafür wird vom Startzustand aus jeder Übergang verfolgt und jeder erreichbare Zustand markiert. Alle unmarkierten Zustände können dann einfach aus dem Automaten entfernt werden, da diese Mülleimer Zustände sind. Anschließend muss überprüft werden, ob die Zustände unterscheidbar sind.
-	Dafür wird eine Tabelle erstellt, welche alle Zustände beinhaltet. Die Diagonale kann dabei entfernt werden Im Anschluss werden bei den Endzuständen alle nichtendzustände entfernt. Danach müssen die Übergänge getestet werden. Dazu werden für jedes freie Feld in der Tabelle die Übergänge geprüft.\newline
+	Bei der Minimierung werden Automaten vereinfacht. Hierzu werden zuerst alle unerreichbaren Zustände entfernt. Danach werden jeweils zwei Zustände miteinander verglichen. Falls einer der Zustände ein Endzustand ist und der andere nicht, wird diese Zelle in der Tabelle als unterscheidbar markeirt(im Bsp.: 0). Falls dies nicht der Fall sein sollte, werden sich die Übergänge der zwei Zustände angesehen. Wenn die Übergänge der beiden Zustände jeweils auf die gleichen Folgezustände zeigen, sind diese nicht unterscheidbar und können am Ende zusammengefasst werden(Im Bsp.: 1).\newline
 	\begin{center}
-		\begin{figure}[!h]
 			\includegraphics[width=\textwidth]{Bilder/MinimizingUbergangBsp.png}
-		\end{figure}
 	\end{center}
-	Hier wurden die Übergänge für (1,0),(2,0),(2,1),(4,3) geprüft. Bei (1,0) führt der Übergang a beim Zustand 0 zu 1 und beim Zustand 1 zu 3, (1,3) ist aber schon markiert, deshalb wird in die Zelle eine eins geschrieben. Wenn der Übergang nicht schon markiert wurde kann eine 0 in die Zelle geschrieben werden. \textcolor{red}{Die (Zahl, Zahl) macht kein Sinn oder?}\newline
+	Hier wurden die Übergänge für (1,0),(2,0),(2,1),(4,3) als unentscheidbar erkannt. Bei (1,0) führt der Übergang a beim Zustand 0 zu 1 und beim Zustand 1 zu 3, (1,3) ist aber schon markiert, deshalb wird in die Zelle eine eins geschrieben. Wenn der Übergang nicht schon markiert wurde kann eine 0 in die Zelle geschrieben werden.\newline
+	\begin{center}
 	\includegraphics[width=\textwidth]{Bilder/MinimizingVereinigung.png}
+	\end{center}
 	Die Zustände bei denen eine 1 steht können zusammengefasst werden. Damit ist die Minimierung abgeschlossen.
 
 	\subsection{Nicht-reguläre Sprachen und das Pumping-Lemma}
 	\begin{enumerate}
-		\item Das gesuchte Wort s besteht aus \textbf{Prolog} u, \textbf{Zyklus} v und \textbf{Epilog} w
-		\item Der Zyklus hat mindestest die Länge 1 $v \neq \epsilon$
-		\item Prolog und Zyklus zusammen haben höchstens die Länge k
-		\item Eine beliebige Anzahl von Zyklus-Durchläufen erzeugt ein Wort der Sprache L
+		\item Das gesuchte Wort $s$ besteht aus \textbf{Prolog} u, \textbf{Zyklus} v und \textbf{Epilog} w
+		\item Der Zyklus hat mindestest die Länge 1: \hspace{1cm} $v \neq \epsilon$
+		\item Prolog und Zyklus zusammen haben höchstens die Länge k. Mit k $\leq |s|$
+		\item Eine beliebige Anzahl von Zyklus-Durchläufen erzeugt ein Wort der Sprache L: $s = uv^hw \in L$
+		\item $|uv| \leq k$
 	\end{enumerate}
 	\begin{center}
 		\begin{figure}[!h]
 			\includegraphics[width=\textwidth]{Bilder/PumpingLemma.png}
 		\end{figure}
 	\end{center}
-	\vspace{.5cm}
-	Hier ein Beispiel:
+	\vspace{2cm}
+	Hier ein anders Beispiel:
 	$$L=\{a^n b^m ~|~ n<m\}$$ \newline
 	Das Wort ist damit $a^n b^m$, dieses Word muss in u, v und w aufgeteilt werden um das Pumping Lemma anzuwenden. \newline
 	$x = a^nb^{n+1} \in L$ \newline
@@ -262,11 +250,11 @@
 	$w = b^m$ \newline
 	Wir teilen u, v und w so auf, dass wir nun das Pumping Lemma anwenden können, wobei k>0 ist.
 	$$x = a^{n-k}(a^k)^ib^{n+1}$$
-	Laut dem Pumping Lemma können wir jetzt k beliebig wählen um das erzeugte Wort sollte immer noch ein Teil der Sprache L sein. i steht dabei für die Iterationen, der des Zyklus. \newline
-	Also wählen wir $ i = 3$ und Formen die gleichen um.
+	Laut dem Pumping Lemma können wir jetzt k beliebig wählen um das erzeugte Wort sollte immer noch ein Teil der Sprache L sein. i steht dabei für die Iterationen des Zyklus. \newline
+	Also wählen wir $ i = 3$ und setzen in die Gleichungen ein:
 	$$x = a^{n + k(-1 +3)}b^{n+1}$$
 	$$x = a^{n + 2k}b^{n+1}$$
-	Weil $k>0$ wissen wir, das das $x \notin L$ und somit auch das L keine reguläre Sprache ist.
+	Weil $k>0$ wissen wir, das das $x \notin L$ und somit auch dass \textbf{L keine reguläre Sprache ist!}
 
 	\subsection{Eigenschaften regulärer Sprachen}
 	Eine Formale Sprache L ist regulär, wenn es einen \textbf{regulären Ausdruck}, einen \textbf{NEA} oder einen \textbf{DEA} gibt.
@@ -275,9 +263,9 @@
 	\begin{enumerate}
 	\item Startzustand als erreichbar markieren
 	\item Markiere iterativ alle erreichbaren Zustände als erreichbar
-	\item Stoppe, wenn ein Endzustand, oder keine neuen erreichbaren Zustände
-	\item Falls ein Endzustand erreichbar ist: Ausgabe „nicht leer“
-	\item Sonst: Ausgabe „leer“
+	\item Stoppe, wenn ein Endzustand erreicht wurde oder wenn keine neuen erreichbaren Zustände gefunden werden
+	\item Falls ein Endzustand erreicht wurde: Ausgabe „nicht leer“
+	\item Sonst: Ausgabe „leer“ $\rightarrow$ Leerheitsproblem erfüllt!
 	\end{enumerate}
 
 	\subsubsection{Wortproblem}
@@ -288,20 +276,21 @@
 
 	\begin{enumerate}
 	\item Zwei NEA's erstellen($A_1, A_2$)
-	\item NEA's ind DEA's transformieren($D_1, D_2$)
+	\item NEA's in DEA's transformieren($D_1, D_2$)
 	\item DEA's Minimieren ($M_1, M_2$)
 	\item Zustände von $M_1$ und $M_2$ umbennen.
 	\end{enumerate}
-	~\newline
-	Wenn $M_1 \equiv M_2$ dann gilt auch $r_1 \equiv r_2$
+	\vspace{.5cm}
+	Wenn $M_1 \equiv M_2$, dann gilt auch $r_1 \equiv r_2$
 
 	\subsubsection{Endlichkeitsproblem}
+	Ist das Problem, zu testen ob eine Sprache endlich ist.
 	\begin{enumerate}
 		\item Markiere iterativ alle vom Startzustand aus erreichbaren Zustände als erreichbar.
-		\item Markiere iterativ alle Zustände, von denen aus ein $q \in F$ erreichbar ist, als terminierend
+		\item Markiere iterativ alle Zustände, von denen aus ein $q \in $ Endzustände $F$ erreichbar ist, als terminierend
 		\item Sei $A_r$ der Automat, der nur die erreichbaren und terminierenden Zustände von A enthält (gleiche Übergänge)
 	\end{enumerate}
-	~\newline
+	\vspace{.5cm}
 	Ist $A_r$ zyklisch folgt, dass $\mathcal{L}(A)$ unendlich ist 
 
 	\subsubsection{Produktautomaten}
@@ -316,25 +305,26 @@
 
 
 \section{Chomsky Grammatiken und kontextfreie Sprachen}
-	Gramatiken erzeugen formale Sprachen dar.\\
-	G=($N, \sum , P, S$) mit:\\
+	Gramatiken erzeugen formale Sprachen und sind auch für mächtigere Sprachklassen ausgelegt.\\\\
+	G=($N, \sum , P, S$) mit:
 	\begin{description}
 		\item[N] Nichtterminalsymbole. Diese können für Regeln verwendet werden, aber dürfen nicht selbst im abgeleiteten Wort stehen.
 		\item[P] Ableitungsregeln. Bsp.: P=$\{ S \rightarrow Aa | \varepsilon , A \rightarrow a \} $ 
-		\item[S] Startsymbol (ist nichtterminel)
+		\item[S] Startsymbol (ist Nicht-Terminal)
 	\end{description}
 
 	\subsection{Chomsky-Hierarchie}
 	\subsubsection{Typ0 unbeschränkt}
-	Ja oke?
+	Jede Chromsky-Grammatik ist vom Typ 0.
 
     \subsubsection{Typ1 Monoton}
-    $\alpha \rightarrow \beta$ mit $| \alpha | \leq  | \beta |$ und Ausnahme $S \rightarrow \varepsilon$, wenn S auf keiner rechten Seite ist.
+    $\alpha \rightarrow \beta$ mit $| \alpha | \leq  | \beta |$ und Ausnahme Startsymbol $S \rightarrow \varepsilon$, wenn S auf keiner rechten Seite ist. \newline
+	$\rightarrow$Regeln ersetzen nur einzelne NTS!
 
     \subsubsection{Typ2 Kontextfreie}
 	A $\rightarrow \beta$ mit A $\in$ N und $\beta \in V$* 
 
-    \subsubsection{Typ3 Rechtsregulär/-linear (RLG)}
+    \subsubsection{Typ3 Rechtsregulär/-linear}
 	A $\rightarrow$ cB mit A $\in$ N; B $\in$ N $\cup$ $\{ \varepsilon \}$; c $\in \sum \cup \{ \varepsilon \}$
 
 	\subsubsection{DEA zu RLG}
@@ -348,13 +338,13 @@
 	$\Delta$ = $\{ (A, c, B) | A \rightarrow cB \in P\} \cup \\
 	\{ (A, c, f) | A \rightarrow c \in P\} \cup \\
 	\{ (A, \epsilon, B) | A \rightarrow B \in P\} \cup \\ 
-	\{ (A, \epsilon, f) | A \rightarrow \epsilon \in P\}$
+	\{ (A, \epsilon, f) | A \rightarrow \epsilon \in P\}$\\
 	Prinzip: Regeln umwandeln und Endzustände $f$ hinzufügen.
 
 	\subsubsection{Kellerautomaten}
 	Endlicher Automat mit unendlichem Stack, auf welchem nur der oberste/neueste Buchstabe gelesen, ">gepusht"< oder ">gepopt"< werden kann.\\
 	\textbf{Akzeptanzbedingung: } Leerer Stack und Wort zu Ende.\\
-	\textbf{Deterministisch, } wenn in jeder Konfiguration nur eine Folgkonfiguration möglich ist.\\
+	\textbf{Deterministisch, } wenn in jeder Konfiguration nur \textbf{eine} Folgkonfiguration möglich ist.\\
 	\textbf{Syntax:} A=(Q, $\Sigma$, $\Gamma$, $\Delta$, $q_0$, Z)\\\\
 	\begin{minipage}[c]{0.5\textwidth}
 		\begin{description}
@@ -378,6 +368,7 @@
 		\end{tabular}
 		\includegraphics[scale=0.3]{Bilder/KellerAutomat.png}
 	\end{minipage}
+	\vspace{.5cm}\newline
 	\textbf{Run/Konfigurationsfolge:} 3er Tupel: (q, [Stack], Wort)
 
 	\subsection{Cocke-Younger-Kasami(CYK)-Algorythmus}
@@ -391,8 +382,13 @@
 	\end{enumerate}
 
 	\subsection{Chomskynormalform CNF}
-	Zur Entscheidung des Wortproblems. Nur Regeln mit Syntax: \\
-	1. $A \rightarrow BC$ oder 2. $A \rightarrow a$ mit $A,B,C \in Nichtterminalsymbole \; \wedge \; a \in Terminalsymbole$ und $S \rightarrow \epsilon$, wenn S auf keiner Rechten Seite ist.\\
+	Zur Entscheidung des Wortproblems. Nur Regeln mit Syntax:\\
+	$A,B,C \in Nichtterminalsymbole \; \wedge \; a \in Terminalsymbole$
+	\begin{itemize}
+		\item $A \rightarrow BC$ 
+		\item $A \rightarrow a$
+		\item $S \rightarrow \epsilon$, wenn S auf keiner Rechten Seite ist.
+	\end{itemize}
 	\textbf{Vorgehen:}
 	\begin{enumerate}
 		\item Epsilon-Regeln entfernen
@@ -413,18 +409,16 @@
 	\end{enumerate}
 	
 	\subsection{Eigenschaften kontextfreier Sprachen}
-	
-	\textbf{Pumping-Lemma 2}\newline
-	Für jedes $s \in L$ mit $|s| \geq k$ gibt es eine Zerlegung $s = u*v *w*x*y$
-	
+	\subsubsection{Pumping-Lemma 2}
+	Für jedes $s \in L$ mit $|s| \geq k$ gibt es eine Zerlegung $s = u \cdot v \cdot w \cdot x \cdot y$
 	\begin{enumerate}
 	\item $vx \neq \epsilon$
 	\item $|vwx| \leq k$
-	\item $u*v^h*w*x^h*y \in L $ für alle $h \in \mathbb{N}$
+	\item $u \cdot v^h \cdot w \cdot x^h \cdot y \in L $ für alle $h \in \mathbb{N}$
 	\end{enumerate}
-Wie im normalen Pumping Lemma wird ein Wort der Sprache in teile aufgespalten, wobei v und x aufgepumpt werden, um zu zeigen, dass sie die Regeln der Sprache verletzen, wodurch gezeigt wird, dass die Sprache nicht kontextfrei ist.\newline
-Mit einer kontextfreien Sprache können Vereinigungen, Konkatenation und Kleene-Stern verwendet werden. Durchschnitt und Komplement aber nicht.\\
-Das Aquivialenzporoblme ist aber unentscheidbar.´
+	Wie im normalen Pumping Lemma wird ein Wort der Sprache in mehrere Teile aufgespalten, wobei $v$ und $x$ aufgepumpt werden, um zu zeigen, dass sie die Regeln der Sprache verletzen, wodurch gezeigt wird, dass die Sprache nicht kontextfrei ist.\newline
+	Mit einer kontextfreien Sprache können Vereinigungen, Konkatenation und Kleene-Stern verwendet werden. Durchschnitt und Komplement aber nicht.\\
+	Das Äquivalenzproblem ist aber unentscheidbar.
 	
 
 \section{Turing Maschine}
@@ -433,32 +427,68 @@ Das Aquivialenzporoblme ist aber unentscheidbar.´
 	M=(Q, $\sum, \Gamma , \Delta , q_0$, F) mit:\\
 	\begin{description}
 		\item[$\Gamma$] Vereinigung aus mindestens Blank-Symbol und Terminalsymbole: $\Gamma \supseteq \sum \cup \{ \square \} $
-		\item[$\Delta$] Übergangsrelationen Syntax: IST-Zustand IST-Inhalt Neuer-Inhalt Verschiebung Neuer-Zustand Bsp.: $0 \left( \begin{array}{c} a \\ \square \end{array}\right) \left( \begin{array}{c} a \\ a \end{array}\right) \left( \begin{array}{c} r \\ l \end{array} \right) 1$
+		\item[$\Delta$] Übergangsrelationen Syntax: IST-Zustand, IST-Inhalt, Neuer-Inhalt, Verschiebung, Neuer-Zustand\\ Bsp.: $0$,\hspace{.25cm} $\square$,\hspace{.25cm} $a$,\hspace{.25cm} $r$,\hspace{.25cm} $1$
 		\item[F] Endzustände
 	\end{description}
-	\textbf{Run/Konfigurationsfolge:} startet mit "> $q_0$w "<, mit w $\in \sum$* und akzeptiert, wenn "> $q \Box $ "< , mit $q \in Q$ 
+	\textbf{Run/Konfigurationsfolge:} startet mit "> $q_0$w "<, mit w $\in \sum$* und akzeptiert, wenn $q \in F$, bzw. $q$ sich im Endzustand befindet!
 
-	\subsection{Mehrbank-Turingmaschine}
+	\begin{center}
+	\includegraphics[width=\textwidth]{Bilder/Turing.png}
+	\end{center}
+	
+	\subsection{Mehrband-Turingmaschine}
+	Wie eine normale Turingmaschine, mit dem Unterschied, dass es mehere Bänder gibt.
+	\includegraphics[width=\textwidth]{Bilder/MehrbandTuring.png}
+	Die Maschinenmodelle „Turing-Maschine“ und „ k-Band-Turing-Maschine“ sind äquivalent.
+	\begin{itemize}
+		\item Nichtdeterministische Turingmaschinen
+		\begin{itemize}
+			\item können durch eine deterministische 2-Band-TM simuliert werden
+			\item beschreiben dieselbe Sprachklasse wie 1-Band-Turingmaschinen
+		\end{itemize}
+	\end{itemize}
 
 	\subsection{Unbeschränkte Grammatiken}
+	\begin{center}
+		\includegraphics[width=\textwidth]{Bilder/Typ0Grammatik.png}
+	\end{center}
+	\textcolor{red}{Vielleicht hier zusätzlich bisschen mehr/besser erklären - Ich hab keine Ahnung davon}
 
 	\subsection{Linear beschränkter Automat}
-		Touring Automat mit beschränktem Band durch Start- und Endsymbol (Band: " $>abaab<$ ")
+		Touring Automat mit beschränktem Band durch Start- und Endsymbol (Band: " $>abaab<$ ")\\
+		\includegraphics[width=\textwidth]{Bilder/l-b-turing.PNG}
 
 
 \section{Entscheidbarkeit}
+	Eine Menge S heißt entscheidbar, wenn eine deterministische Turing-Maschine M existiert, die eine Eingabe w ...
+	\begin{itemize}
+		\item ...akzeptiert, wenn w $\in$ S gilt.
+		\item ...verwirft, wenn w $\notin$ S gilt.
+	\end{itemize}
+
 	\subsection{Unentscheidbarkeit des speziellen Wortproblems}
+	\textcolor{red}{Ich hab keine Ahnung?}
 
 	\subsection{Reduktionsweise}
 	\includegraphics[scale=0.4]{Bilder/Zusammenfassung_Unentscheidbarkeiten.png}
 
-	\subsection{Das PKP und weitere unentscheidbare Probleme}
+	\subsection{Das PKP(Postsches Korrespondenzproblem) und weitere unentscheidbare Probleme}
 	Endliche Folge an Wortpaaren, mit nichtleeren Wörtern, über endlichem Alphabet.\\
-	\textbf{Syntax:} P=($(l_1, r_1), (l_2, r_2), ...(l_n, r_n)$) \hfill \textbf{Lösung:} $l_{i_1} \cdot l_{i_2} \cdot ... \cdot l_{i_n} = r_{i_1} \cdot r_{i_2} \cdot ... \cdot r_{i_n}$
+	\textbf{Syntax:} P=($(l_1, r_1), (l_2, r_2), ...(l_n, r_n)$) \hfill \textbf{Lösung:} $l_{i_1} \cdot l_{i_2} \cdot ... \cdot l_{i_n} = r_{i_1} \cdot r_{i_2} \cdot ... \cdot r_{i_n}$\\
+	\includegraphics[width=\textwidth]{Bilder/pkp.PNG}
+
+	\subsubsection{MPKP}
+	\includegraphics[width=\textwidth]{Bilder/mpkp.PNG}
 
 	\subsection{Semi-Entscheidbarkeit}
-	
+	Sei $\varSigma$ ein Alphabet. Eine Sprache L $\subseteq \varSigma^*$ heißt semi-entscheidbar, wenn es eine DTM gibt, die mit Eingabe w $\in \varSigma^*$ 
+	\begin{itemize}
+		\item terminiert, wenn w $\in$ L gilt
+		\item nicht terminiert sonst
+	\end{itemize}
+
 	\subsection{Die universelle Turingmaschine}
+	\textcolor{red}{Ich hab keine Ahnung?}
 
 	\subsection{Abschlusseigenschaften}
 
