@@ -371,7 +371,7 @@
 	\vspace{.5cm}\newline
 	\textbf{Run/Konfigurationsfolge:} 3er Tupel: (q, [Stack], Wort)
 
-	\subsection{Cocke-Younger-Kasami(CYK)-Algorythmus}
+	\subsection{Cocke-Younger-Kasami(CYK)-Algorithmus}
 	Entscheidet Wortproblem für kontextfreie Grammatiken in CNF. Bsp.:\\
 	\includegraphics[scale=0.3]{Bilder/cyk-Algo.png}
 	\begin{enumerate}
@@ -452,8 +452,7 @@
 	\begin{center}
 		\includegraphics[width=\textwidth]{Bilder/Typ0Grammatik.png}
 	\end{center}
-	
-	Zusammenfassend, Turing Maschinen erkennen Sprachen die durch unbegränzte Grammatilken erzeugt werden. Im ersten Band wird das Eingabewort gespeichert, während im zweiten Band versucht wird das gleiche Wort anhand der Regeln zu erstellen. Wenn das Wort im Band1 und Band2 gleich sind, dann wird die eingabe Akzeptiert.
+	\noindent Zusammenfassend: Turing Maschinen erkennen Sprachen die durch unbegränzte Grammatilken erzeugt werden. Im ersten Band wird das Eingabewort gespeichert, während im zweiten Band versucht wird das gleiche Wort anhand der Regeln zu erstellen. Wenn das Wort im Band1 und Band2 gleich sind, dann wird die eingabe Akzeptiert.
 
 	\subsection{Linear beschränkter Automat}
 		Touring Automat mit beschränktem Band durch Start- und Endsymbol (Band: " $>abaab<$ ")\\
@@ -492,38 +491,37 @@ Das Spezielle Wortproblem W ist die Menge aller Turing Maschinen die ihre sich s
 	\end{itemize}
 
 	\subsection{Die universelle Turingmaschine}
-	\textcolor{red}{Ich hab keine Ahnung?}\newline
-	\textbf{\textcolor{red}{SAME !!!}}
+	\textcolor{red}{keine Ahnung?}
 
 	\subsection{Abschlusseigenschaften}
+	\textcolor{red}{keine Ahnung?}
 
 \section{Berechenbarkeit}
 	\subsection{Turing Berechenbarkeit}
+	\textcolor{red}{keine Ahnung?}
 
 	\subsection{WHILE Programme}
-	
 	\begin{tabularx}{0.8\textwidth}{ 
-   >{\raggedleft\arraybackslash}X 
-   >{\raggedright\arraybackslash}X }
-	Variablen & $x_0, x_1, x_2, ...$ \\
-	Konstanten & $0, 1, 2, ...$ \\
-	Zuweisungsoperator & := \\
-	Kompositionsoperator &  ; \\
-	Arithmetische Operatoren & +,- \\
-	Schlüsselwörter & \textbf{while, do, end} \\
+	>{\raggedleft\arraybackslash}X 
+	>{\raggedright\arraybackslash}X }
+		Variablen & $x_0, x_1, x_2, ...$ \\
+		Konstanten & $0, 1, 2, ...$ \\
+		Zuweisungsoperator & := \\
+		Kompositionsoperator &  ; \\
+		Arithmetische Operatoren & +,- \\
+		Schlüsselwörter & \textbf{while, do, end} \\
 	\end{tabularx}
-	~\\~\\
-while: solange die Variable nicht 0 ist\\
-loop: While Schleife  für Variable (for-Schleife in Java)\\
+	\newline
+	while: solange die Variable nicht 0 ist\\
+	loop: While Schleife  für Variable (for-Schleife in Java)\\
 
-\begin{enumerate}
-\item Wertzuweisung \textbf{immer mit Konstante hinten}\\
-$$x_i := x_j +c$$
-\item Komposition Sind P1 und P2 WHILE-Programme, dann auch\\
-$$P_1; P_2$$
-\item While-Schleife: Ist P ein WHILE-Programm und i 2 N, dann auch "while $x_i$do P end"
-\end{enumerate}
-~\\~\\
+	\begin{enumerate}
+		\item Wertzuweisung \textbf{immer mit Konstante hinten}\\
+		$$x_i := x_j +c$$
+		\item Komposition Sind P1 und P2 WHILE-Programme, dann auch\\
+		$$P_1; P_2$$
+		\item While-Schleife: Ist P ein WHILE-Programm und i 2 N, dann auch "while $x_i$do P end"
+	\end{enumerate}
 	\includegraphics[width=\textwidth]{Bilder/loopexmp.PNG}
 	
 	\includegraphics[width=\textwidth]{Bilder/ifelseexmp.PNG}
@@ -531,10 +529,15 @@ $$P_1; P_2$$
 	\includegraphics[width=\textwidth]{Bilder/subexmp.PNG}
 
 	\subsection{Die Church-Turing-These}
+	\textcolor{red}{keine Ahnung?}
 
 \section{Komplexität}
 	\subsection{Komplexitätsklassen}
+	Die Komplexität einer Turing Maschine, bzw eines Algorithmusses wird in Schritten angegeben. Eine Turingmaschine M heißt f-zeitbeschränkt, wenn M für jede Eingabe w höchstens f(w) Schritte hat. Für DEA heißt diese TIME und für NEA NTIME. Diese beschreibt nicht die Komplexität eines speziellen Algorithmus, sondern des Problems, d.h. des besten Algorithmus.\\
+	P steht für polynomiell und NP für nichtdeterministisch polynomiell.
 
 	\subsection{NP-Vollständigkeit}
+	\textcolor{red}{Keine Ahnung?}
+	
 
 \end{document}
