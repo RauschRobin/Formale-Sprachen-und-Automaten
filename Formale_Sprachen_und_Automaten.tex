@@ -501,6 +501,34 @@ Das Spezielle Wortproblem W ist die Menge aller Turing Maschinen die ihre sich s
 	\subsection{Turing Berechenbarkeit}
 
 	\subsection{WHILE Programme}
+	
+	\begin{tabularx}{0.8\textwidth}{ 
+   >{\raggedleft\arraybackslash}X 
+   >{\raggedright\arraybackslash}X }
+	Variablen & $x_0, x_1, x_2, ...$ \\
+	Konstanten & $0, 1, 2, ...$ \\
+	Zuweisungsoperator & := \\
+	Kompositionsoperator &  ; \\
+	Arithmetische Operatoren & +,- \\
+	Schlüsselwörter & \textbf{while, do, end} \\
+	\end{tabularx}
+	~\\~\\
+while: solange die Variable nicht 0 ist\\
+loop: While Schleife  für Variable (for-Schleife in Java)\\
+
+\begin{enumerate}
+\item Wertzuweisung \textbf{immer mit Konstante hinten}\\
+$$x_i := x_j +c$$
+\item Komposition Sind P1 und P2 WHILE-Programme, dann auch\\
+$$P_1; P_2$$
+\item While-Schleife: Ist P ein WHILE-Programm und i 2 N, dann auch "while $x_i$do P end"
+\end{enumerate}
+~\\~\\
+	\includegraphics[width=\textwidth]{Bilder/loopexmp.PNG}
+	
+	\includegraphics[width=\textwidth]{Bilder/ifelseexmp.PNG}
+	
+	\includegraphics[width=\textwidth]{Bilder/subexmp.PNG}
 
 	\subsection{Die Church-Turing-These}
 
