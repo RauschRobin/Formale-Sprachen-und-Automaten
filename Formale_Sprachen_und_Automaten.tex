@@ -132,28 +132,17 @@
 	
 	\subsubsection{Komplement eines EAs}
 	Wird durch vertauschen von End- und Nichtendzuständen erzeugt.
+	\newpage
 
 	\subsubsection{Transformation DEA zu RA}
 	Um einen DEA zu einem RA umzuformen müssen zuerst die Gleichungen der jeweiligen Zustände aufgestellt und vereinfacht werden:\newline
-	\begin{center}
-		\begin{figure}[!h]
-			\includegraphics[width=\textwidth]{Bilder/DEAzuRA1.png}
-		\end{figure}
-	\end{center}
+	\includegraphics[width=\textwidth]{Bilder/DEAzuRA1.png}
 	Da $L_2$ der Endzustand ist, bekommt die Gleichung $\varepsilon$ hinzuaddiert!\newline
 	Folglich kann man die gekürzten Gleichungen in einander einsetzen um bis zum Anfangszustand zu kommen:\newline
-	\begin{center}
-		\begin{figure}[!h]
-			\includegraphics[]{Bilder/DEAzuRA2.png}
-		\end{figure}
-	\end{center}
+	\includegraphics[]{Bilder/DEAzuRA2.png}\newline
 	Der vereinfachte Anfangszustand $L_0$ ist dann der RA zum zugehörigen DEA:\newline
-	\begin{center}
-		\begin{figure}[!h]
-			\includegraphics[width=\textwidth]{Bilder/DEAzuRA3.png}
-		\end{figure}
-	\end{center}
-
+	\includegraphics[width=\textwidth]{Bilder/DEAzuRA3.png}
+	
 	\subsubsection{RA zu NEA}
 	Aus den elementaren RA können einfach NEAs erstellt werden.
 	\begin{center}
@@ -217,7 +206,7 @@
 	\end{center}
 
 	\subsection{Minimierung}
-	Bei der Minimierung werden Automaten vereinfacht. Hierzu werden zuerst alle unerreichbaren Zustände entfernt. Danach werden jeweils zwei Zustände miteinander verglichen. Falls einer der Zustände ein Endzustand ist und der andere nicht, wird diese Zelle in der Tabelle als unterscheidbar markeirt(im Bsp.: 0). Falls dies nicht der Fall sein sollte, werden sich die Übergänge der zwei Zustände angesehen. Wenn die Übergänge der beiden Zustände jeweils auf die gleichen Folgezustände zeigen, sind diese nicht unterscheidbar und können am Ende zusammengefasst werden(Im Bsp.: 1).\newline
+	Bei der Minimierung werden Automaten vereinfacht. Hierzu werden zuerst alle unerreichbaren Zustände entfernt. Danach werden jeweils zwei Zustände miteinander verglichen. Falls einer der Zustände ein Endzustand ist und der andere nicht, wird diese Zelle in der Tabelle als unterscheidbar markeirt(im Bsp. 0). Falls dies nicht der Fall sein sollte, werden sich die Übergänge der zwei Zustände angesehen. Wenn die Übergänge der beiden Zustände jeweils auf die gleichen Folgezustände zeigen, sind diese nicht unterscheidbar und können am Ende zusammengefasst werden(Im Bsp.: X oder \textit{leer}). Andernfalls sind diese ebenfalls unterscheidbar(im Bsp.: 1).\newline
 	\begin{center}
 			\includegraphics[width=\textwidth]{Bilder/MinimizingUbergangBsp.png}
 	\end{center}
@@ -225,7 +214,7 @@
 	\begin{center}
 	\includegraphics[width=\textwidth]{Bilder/MinimizingVereinigung.png}
 	\end{center}
-	Die Zustände bei denen eine 1 steht können zusammengefasst werden. Damit ist die Minimierung abgeschlossen.
+	Die Zustände bei denen ein X oder \textit{leer} steht, können zusammengefasst werden. Damit ist die Minimierung abgeschlossen.
 
 	\subsection{Nicht-reguläre Sprachen und das Pumping-Lemma}
 	\begin{enumerate}
